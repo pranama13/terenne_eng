@@ -36,7 +36,8 @@ import MidlevelPackage from "./pages/midlevelPackage";
 import HighendPackages from "./pages/highendPackages";
 import InternationalPackage from "./pages/internationalPackage";
 import CorporatePackages from "./pages/corporatePackages";
-
+// --- NEW: Import the ProjectsPage component ---
+import ProjectsPage from "./pages/ProjectsPage"; // Adjust the path if you saved ProjectsPage.tsx elsewhere
 
 
 const queryClient = new QueryClient();
@@ -80,6 +81,9 @@ const App = () => (
           <Route path="/packages/corporate" element={<CorporatePackages />} />
           <Route path="/blog" element={<Blog />} />
           
+          {/* --- NEW: Add the route for the projects page --- */}
+          <Route path="/projects" element={<ProjectsPage />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

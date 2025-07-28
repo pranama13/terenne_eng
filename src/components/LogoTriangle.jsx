@@ -24,7 +24,7 @@ const LogoTriangle = () => {
     <div style={{ position: "relative", width: 120, height: 120 }}>
       {/* This div is for the shape ONLY and it is the one that spins. */}
       <div
-        className="animate-spin-slow" // Use the Tailwind class for animation
+        // Use the Tailwind class for animation
         style={{
           width: '100%',
           height: '100%',

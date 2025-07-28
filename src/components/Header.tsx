@@ -181,7 +181,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                 </NavigationMenuItem>
                  {/* Spinning Logo */}
               <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
-                <div className="animate-spin-slow">
+                
                   <LogoTriangle />
                 </div>
               </div>

@@ -20,11 +20,10 @@ const LogoTriangle = () => {
   }, [sides]);
 
   return (
-    // Main container for positioning. It does not spin.
+    // Main container for positioning.
     <div style={{ position: "relative", width: 120, height: 120 }}>
-      {/* This div is for the shape ONLY and it is the one that spins. */}
+      {/* This div is for the shape ONLY. The animation class has been removed. */}
       <div
-        // Use the Tailwind class for animation
         style={{
           width: '100%',
           height: '100%',
@@ -33,7 +32,7 @@ const LogoTriangle = () => {
         }}
       />
       
-      {/* The logo is a sibling to the spinning shape, but positioned on top. It does not spin. */}
+      {/* The logo is a sibling to the shape, positioned on top. */}
       <div
         style={{
           position: "absolute",

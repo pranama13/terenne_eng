@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -72,11 +72,8 @@ interface HeaderProps {
 
 const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [expandedSection, setExpandedSection] = useState<string | null>(null);
-
-  const toggleSection = (section: string) => {
-    setExpandedSection(expandedSection === section ? null : section);
-  };
+  // --- FIX: State to track the hovered service category ---
+  const [hoveredCategory, setHoveredCategory] = useState<number>(0);
 
   const headerClasses = mode === 'transparent'
     ? "bg-transparent backdrop-blur-sm sticky top-0 z-50 transition-all duration-300"
@@ -116,21 +113,51 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+                
+                {/* --- UPDATED SERVICES MENU --- */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={navTextClass}>SERVICES</NavigationMenuTrigger>
+                  <NavigationMenuTrigger 
+                    className={navTextClass}
+                    // Reset to the first category when the menu is opened
+                    onMouseEnter={() => setHoveredCategory(0)}
+                  >
+                    SERVICES
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                    <div className="w-[800px] p-6 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 grid grid-cols-4 gap-6">
-                      {serviceCategories.map((category, idx) => (
-                        <div key={idx}>
-                          <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">{category.category}</h5>
-                          <ul className="space-y-2">
-                            {category.services.map((service, serviceIdx) => (<li key={serviceIdx}><NavigationMenuLink asChild><Link to={service.to} className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">{service.label}</Link></NavigationMenuLink></li>))}
+                    <div className="w-[800px] p-6 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 flex gap-6">
+                      {/* Main Categories List */}
+                      <ul className="w-1/4 space-y-2 border-r border-white/10 pr-4">
+                        {serviceCategories.map((category, idx) => (
+                           <li 
+                             className="group" 
+                             key={idx}
+                             // --- FIX: Update the hovered category state on mouse enter ---
+                             onMouseEnter={() => setHoveredCategory(idx)}
+                           >
+                             <Link to="#" className="flex justify-between items-center p-2 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                               {category.category}
+                               <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                             </Link>
+                           </li>
+                        ))}
+                      </ul>
+                      {/* Sub-services display area */}
+                      <div className="w-3/4">
+                        {/* --- FIX: Dynamically render sub-services based on the hovered category --- */}
+                        {serviceCategories[hoveredCategory] && (
+                         <div>
+                          <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">{serviceCategories[hoveredCategory].category}</h5>
+                          <ul className="space-y-2 grid grid-cols-2 gap-x-4">
+                            {serviceCategories[hoveredCategory].services.map((service, serviceIdx) => (
+                                <li key={serviceIdx}>
+                                    <NavigationMenuLink asChild>
+                                        <Link to={service.to} className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">{service.label}</Link>
+                                    </NavigationMenuLink>
+                                </li>
+                            ))}
                           </ul>
                         </div>
-                      ))}
-                      <div className="col-span-4 pt-4 mt-2 border-t border-white/10 flex justify-between items-center">
-                        <p className="text-xs text-white/60">Explore our comprehensive range of engineering and architectural services</p>
-                        <Button variant="link" className="text-primary p-0 h-auto" asChild><Link to="/services" className="flex items-center">View All Services <ChevronDown className="ml-1 h-3 w-3 rotate-270" /></Link></Button>
+                        )}
                       </div>
                     </div>
                   </NavigationMenuContent>
@@ -152,13 +179,12 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                 {/* --- SPINNING LOGO IN THE MIDDLE --- */}
-              <div className="mx-4" style={{ transform: 'scale(0.8)',  }}>
-                
-                <LogoTriangle />
-                
+                 {/* Spinning Logo */}
+              <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
+                <div className="animate-spin-slow">
+                  <LogoTriangle />
+                </div>
               </div>
-                {/* --- ADDED PACKAGES --- */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>PACKAGES</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
@@ -176,7 +202,6 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                   <Link to="/projects" className={`${navTextClass} font-bold`}>PROJECTS</Link>
                 </NavigationMenuItem>
 
-                {/* --- ADDED SUSTAINABILITY --- */}
                 <NavigationMenuItem>
                   <Link to="/sustainability" className={`${navTextClass} font-bold`}>SUSTAINABILITY</Link>
                 </NavigationMenuItem>

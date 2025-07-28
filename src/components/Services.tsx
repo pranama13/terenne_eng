@@ -219,21 +219,22 @@ const Services = () => {
 	}, [imageIndex]);
 
 	return (
-		<section id="services" className="py-0 md:py-0 bg-[#212121] overflow-hidden w-full relative">
-			<div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16 relative z-20">
+		<section id="services" className="py-15 bg-[#212121] overflow-hidden w-full relative">
+			<div className="w-full max-w-9xl mx-auto px-4 md:px-8 relative z-20">
 				{/* Header section */}
 				<div
 					ref={headerRef}
 					className={`transform transition-all duration-700 ${animated.header ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
 				>
+					{/* --- BORDER REDUCED --- */}
+					{/* The 'border' and 'border-white/10' classes have been removed from this container */}
 					<div 
-						className="grid lg:grid-cols-2 gap-0 items-stretch rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl"
+						className="grid lg:grid-cols-2 gap-0 items-stretch rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
 					>
 						{/* Image section - now on the left */}
 						<div
 							className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-stretch rounded-l-2xl overflow-hidden border border-white/10 transition-all duration-300"
 							style={{
-								// Reduce the shadow intensity here
 								boxShadow: '0 0px 0px 0 rgba(20,20,20,0.15)',
 							}}
 						>
@@ -259,7 +260,6 @@ const Services = () => {
 						<div
 							className="flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] rounded-r-2xl border-l border-white/10 relative overflow-hidden transition-all duration-300"
 							style={{
-								// Reduce the shadow intensity here as well
 								boxShadow: '0 2px 12px 0 rgba(20,20,20,0.15)',
 							}}
 						>
@@ -311,7 +311,7 @@ const Services = () => {
 				{/* Main service categories */}
 				<div
 					ref={categoriesRef}
-					className={`transform transition-all duration-700 ${
+					className={`mt-16 transform transition-all duration-700 ${
 						animated.serviceCategories ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
 					}`}
 				>

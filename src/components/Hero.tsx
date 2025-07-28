@@ -10,7 +10,7 @@ import { SHADOW_PRESETS, DARK_THEME_SHADOWS } from '@/lib/shading';
 
 // Import your video assets
 import heroVideo from '@/assert/videos/hero-background.mp4';
-import heroVideo2 from '@/assert/videos/hero-background2.mp4';
+
 
 // Import your Header component for navigation
 import Header from './Header';
@@ -63,10 +63,7 @@ const Hero = () => {
           <source src={heroVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <video ref={video2Ref} muted playsInline className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${activeVideo === 2 ? 'opacity-100' : 'opacity-0'}`} style={{ filter: 'brightness(0.85)' }}>
-          <source src={heroVideo2} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+       
         
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/60 to-black/100"></div>

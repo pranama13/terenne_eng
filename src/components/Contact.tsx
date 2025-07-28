@@ -36,8 +36,12 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-18 pb-8 md:pt-12 md:pb-8 bg-[#212121] w-full">
-      <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
+    // --- GAPS REDUCED ---
+    // Vertical padding has been reduced for a more compact layout.
+    <section id="contact" className="py-8 md:py-12 bg-[#212121] w-full">
+      {/* --- GAPS REDUCED --- */}
+      {/* Horizontal padding and max-width have been adjusted for consistency. */}
+      <div className="w-full max-w-9xl mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Information Section */}
           <div className="lg:order-2">

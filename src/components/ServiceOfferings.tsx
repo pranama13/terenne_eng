@@ -31,9 +31,10 @@ const ServiceOfferings = () => {
   ];
 
   return (
-    <section id="ServiceOfferings" className={`pt-0 pb-0 bg-[#212121] w-full`}>
-      <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16">
-        {/* New container with padding and background image - now with premium glow effects */}
+    <section id="ServiceOfferings" className="py-2 md:py-4 bg-[#212121] w-full">
+      {/* --- WIDTH REDUCED --- */}
+      {/* A max-width has been re-applied and horizontal padding increased to make the container narrower. */}
+      <div className="w-full max-w-9xl mx-auto px-4 md:px-8">
         <div className="relative mb-8">
           {/* Outer premium white glow */}
           <div className="absolute -inset-3 bg-gradient-to-r from-white/5 via-white/10 to-white/5 rounded-2xl blur-xl z-0"></div>

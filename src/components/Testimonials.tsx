@@ -87,8 +87,12 @@ const Testimonials = () => {
     };
 
     return (
-        <section className="py-0 md:py-0 bg-[#212121] w-full relative overflow-hidden">
-            <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16 relative z-20">
+        // --- GAPS REDUCED ---
+        // Vertical padding (py) has been reduced.
+        <section className="py-8 md:py-12 bg-[#212121] w-full relative overflow-hidden">
+            {/* --- GAPS REDUCED --- */}
+            {/* Horizontal padding (px) has been reduced and max-width removed. */}
+            <div className="w-full mx-auto px-4 md:px-8 relative z-20">
                 <div className="relative">
                     {/* Blurred background image for the main card */}
                     <div

@@ -67,21 +67,29 @@ const About = () => {
 	}, [isImageVisible, showSecondImage]);
 
 	return (
+		// --- MARGINS ADJUSTED ---
+		// A small amount of vertical padding (py-8) has been added back.
 		<section
 			id="about"
-			className="py-16 md:py-20 bg-[#212121] overflow-hidden w-full relative"
+			className="bg-[#212121] overflow-hidden w-full relative py-8"
 		>
-			<div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16 relative z-20">
+			{/* --- MARGINS ADJUSTED --- */}
+            {/* A small amount of horizontal padding (px-4 md:px-8) has been added back. */}
+			<div className="w-full relative z-20 px-4 md:px-8">
 				{/* Main content */}
 				<div ref={contentRef} className={`transform transition-all duration-700 ${animated.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 					<div 
-						className="grid lg:grid-cols-2 gap-0 items-stretch rounded-2xl overflow-hidden border border-white/10 transition-all duration-300 hover:shadow-2xl"
+						// --- BORDERS RESTORED ---
+                        // The rounded-2xl class has been added back to give the component soft corners.
+						className="grid lg:grid-cols-2 gap-0 items-stretch overflow-hidden transition-all duration-300 hover:shadow-2xl rounded-2xl"
 						style={{
 							boxShadow: SHADOW_PRESETS.ABOUT.style,
 						}}
 					>
 						{/* Text content */}
-						<div className="flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] rounded-l-2xl border-r border-white/10 relative overflow-hidden transition-all duration-300"
+						<div 
+                            // Padding is kept generous for internal spacing.
+                            className="flex flex-col justify-center p-8 md:p-12 lg:p-16 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] border-r border-white/10 relative overflow-hidden transition-all duration-300"
 							style={{ 
 								boxShadow: DARK_THEME_SHADOWS.ELEVATED.MEDIUM,
 							}}>
@@ -91,7 +99,7 @@ const About = () => {
 							</div>
 							
 							<div className="relative z-10">
-								<div className="mb-10">
+								<div className="mb-6">
 									<div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 py-3 px-6 rounded-2xl shadow-lg hover:bg-white/15 transition-all duration-300 group"
 										style={{
 											boxShadow: DARK_THEME_SHADOWS.CARD.MEDIUM,
@@ -102,22 +110,22 @@ const About = () => {
 									</div>
 								</div>
 								
-								<h2 className="text-4xl lg:text-6xl font-bold text-white mb-10 leading-tight">
+								<h2 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
 									<span className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">About Terrene</span>
 									<br /><span className="text-white/90 font-light">Engineering</span>
 								</h2>
 								
-								<div className="flex items-center gap-4 mb-10">
+								<div className="flex items-center gap-4 mb-6">
 									<div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/60 rounded-full"></div>
 									<div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
 									<div className="w-8 h-1 bg-gradient-to-r from-primary/60 to-transparent rounded-full"></div>
 								</div>
 								
-								<p className="text-white/90 text-lg leading-relaxed max-w-lg mb-6">
+								<p className="text-white/90 text-lg leading-relaxed max-w-lg mb-4">
 									Established with a vision to transform the engineering landscape, Terrene Engineering (Private) Limited has been at the forefront of innovative solutions for over two decades. Our team of licensed professional engineers specializes in structural design, civil engineering, and architectural consulting, delivering projects that exceed industry standards while maintaining the highest levels of safety and sustainability.
 								</p>
 								
-								<div className="flex flex-wrap gap-4 mb-8">
+								<div className="flex flex-wrap gap-4 mb-6">
 									<div className="flex items-center gap-2 text-white/80 text-sm">
 										<Award className="w-4 h-4 text-primary" />
 										<span>20+ Years Experience</span>
@@ -147,7 +155,7 @@ const About = () => {
 						{/* Image */}
 						<div
 							ref={imageRef}
-							className="relative min-h-[250px] md:min-h-[300px] lg:min-h-[350px] flex items-stretch rounded-r-2xl overflow-hidden border border-white/10 transition-all duration-300"
+							className="relative min-h-[250px] md:min-h-[300px] lg:min-h-[350px] flex items-stretch overflow-hidden border-l border-white/10 transition-all duration-300"
 							style={{
 								opacity: isImageVisible ? 1 : 0,
 								transform: isImageVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',

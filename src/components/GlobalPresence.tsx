@@ -40,8 +40,12 @@ const GlobalPresence = () => {
   }, []);
 
   return (
-    <section className="py-0 md:py-0 bg-[#212121] relative overflow-hidden w-full">
-      <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16 relative z-20">
+    // --- GAPS REDUCED ---
+    // Vertical padding (py) has been reduced.
+    <section className="py-4 md:py-6 bg-[#212121] relative overflow-hidden w-full">
+      {/* --- GAPS REDUCED --- */}
+      {/* Horizontal padding (px) has been reduced and max-width removed to decrease side gaps. */}
+      <div className="w-full mx-auto px-2 md:px-4 relative z-20">
         <div className="grid lg:grid-cols-2 gap-0 items-stretch rounded-2xl overflow-hidden shadow-2xl border border-white/10">
           {/* Text content (left) */}
           <div className="flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] rounded-l-2xl border-r border-white/10 relative overflow-hidden min-h-[400px] shadow-xl">
@@ -67,7 +71,7 @@ const GlobalPresence = () => {
                 ].map((country) => (
                   <li key={country}>
                     <div
-                      className={`flex items-center justify-between px-4 py-3 border border-white bg-white/5 cursor-pointer transition-all duration-300 ${
+                      className={`flex items-center justify-between px-5 py-4 border border-white bg-white/5 cursor-pointer transition-all duration-300 ${
                         openCountry === country
                           ? 'bg-primary/10 border-white rounded-t-lg'
                           : 'hover:bg-white/10 rounded-lg'

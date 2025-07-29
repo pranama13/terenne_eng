@@ -79,19 +79,22 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
     ? "bg-transparent backdrop-blur-sm sticky top-0 z-50 transition-all duration-300"
     : "bg-background shadow-sm border-b border-border sticky top-0 z-50 transition-all duration-300";
 
-  const navTextClass = `${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent transition-colors px-3 py-2 text-sm font-medium`;
+  const navTextClass = `${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent transition-colors px-3 py-2 text-md font-medium`;
 
   return (
+    
     <header className={`${headerClasses} ${className} w-full`}>
+      
       <div className="w-full max-w-[2400px] mx-auto px-2 py-1">
         <div className="flex items-center justify-between">
-          {/* Placeholder to balance the Inquiry button on the right */}
-          <div className="w-24"></div>
+            {/* --- LOGO MOVED TO THE LEFT --- */}
+            <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
+                <LogoTriangle />
+            </div>
 
-          {/* Navigation - Centered with inline logo */}
+          {/* Navigation - Centered */}
           <div className="flex-1 flex justify-center">
             <NavigationMenu className="hidden md:flex items-center">
-              {/* --- LEFT NAVIGATION ITEMS --- */}
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <Link to="/" className={`${navTextClass} font-bold`}>HOME</Link>
@@ -105,7 +108,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                       <NavigationMenuLink asChild><Link to="/sustainability" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Sustainability</Link></NavigationMenuLink>
                       <NavigationMenuLink asChild><Link to="/testimonial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Testimonial</Link></NavigationMenuLink>
                       <NavigationMenuLink asChild><Link to="/sitemap" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Sitemap</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/qualitypolicy" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Quality Policy</Link></NavigationMenuLink>
+                      <NavigationMenuLink asChild><Link to="/qualitypolicy" className="block px-3 py-2 text-sm   text-white hover:bg-white/10 rounded">Quality Policy</Link></NavigationMenuLink>
                       <NavigationMenuLink asChild><Link to="/faq" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">FAQ</Link></NavigationMenuLink>
                       <NavigationMenuLink asChild><Link to="/career" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Career</Link></NavigationMenuLink>
                       <NavigationMenuLink asChild><Link to="/blog" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Blog</Link></NavigationMenuLink>
@@ -162,12 +165,6 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-              </NavigationMenuList>
-
-             
-
-              {/* --- RIGHT NAVIGATION ITEMS --- */}
-              <NavigationMenuList>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>SOFTWARE EXPERTISE</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
@@ -179,12 +176,6 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                 {/* Spinning Logo */}
-              <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
-                
-                  <LogoTriangle />
-                </div>
-              </div>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>PACKAGES</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
@@ -197,15 +188,12 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-
                 <NavigationMenuItem>
                   <Link to="/projects" className={`${navTextClass} font-bold`}>PROJECTS</Link>
                 </NavigationMenuItem>
-
                 <NavigationMenuItem>
                   <Link to="/sustainability" className={`${navTextClass} font-bold`}>SUSTAINABILITY</Link>
                 </NavigationMenuItem>
-
                 <NavigationMenuItem>
                   <Link to="/inquiry" className={`${navTextClass} font-bold`}>CONTACT US</Link>
                 </NavigationMenuItem>
@@ -213,17 +201,14 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
             </NavigationMenu>
           </div>
 
-          {/* Inquiry button aligned right */}
-          <div className="hidden md:flex items-center w-24 justify-end" style={{ marginRight: '59px' }}>
-            <Button variant="outline" className="bg-[#00A5E7] border-white border-2 text-white hover:bg-[#00A5E7]/90 hover:border-white px-6 py-1.5 font-semibold rounded-lg transition-all duration-300 shadow-lg text-base" asChild>
-              <Link to="/inquiry">INQUIRY</Link>
-            </Button>
-          </div>
+          {/* --- INQUIRY BUTTON REMOVED --- */}
 
-          {/* Mobile Menu Button (functionality unchanged) */}
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation (functionality unchanged) */}

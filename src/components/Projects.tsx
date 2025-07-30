@@ -3,7 +3,6 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { SPACING_CLASSES } from '@/lib/spacing';
-import { SHADOW_PRESETS, DARK_THEME_SHADOWS } from '@/lib/shading';
 
 import commercialImage from '../assert/Project/comercial.jpg';
 import educationImage from '../assert/Project/education.jpg';
@@ -12,90 +11,17 @@ import hospitalImage from '../assert/Project/hospital.jpg';
 import infrastructureImage from '../assert/Project/infrastructure.jpg';
 import StructuralEngineering from '../assert/StructuralEngineering.jpg';
 
-// This constant now only controls how many cards are cloned for the infinite loop effect.
-const VISIBLE_COUNT = 4;
-
 const initialProjects = [
-    {
-        index: 1,
-        title: 'Commercial Complex Design',
-        category: 'Commercial',
-        image: commercialImage,
-        location: 'Downtown Metro City',
-        year: '2023',
-    },
-    {
-        index: 2,
-        title: 'Educational Building',
-        category: 'Institutional',
-        image: educationImage,
-        location: 'University Campus',
-        year: '2022',
-    },
-    {
-        index: 3,
-        title: 'Residential Development',
-        category: 'Residential',
-        image: facultyImage,
-        location: 'Coastal Heights',
-        year: '2022',
-    },
-    {
-        index: 4,
-        title: 'Healthcare Facility',
-        category: 'Healthcare',
-        image: hospitalImage,
-        location: 'Central Medical District',
-        year: '2021',
-    },
-    {
-        index: 5,
-        title: 'Infrastructure Project',
-        category: 'Infrastructure',
-        image: infrastructureImage,
-        location: 'Regional Highway 101',
-        year: '2023',
-    },
-    {
-        index: 6,
-        title: 'Industrial Facility',
-        category: 'Industrial',
-        image: commercialImage,
-        location: 'Tech Industrial Park',
-        year: '2021',
-    },
-    {
-        index: 7,
-        title: 'Urban Office Tower',
-        category: 'Commercial',
-        image: commercialImage,
-        location: 'Metro Business District',
-        year: '2024',
-    },
-    {
-        index: 8,
-        title: 'Science Research Center',
-        category: 'Institutional',
-        image: educationImage,
-        location: 'Innovation Park',
-        year: '2023',
-    },
-    {
-        index: 9,
-        title: 'Luxury Apartments',
-        category: 'Residential',
-        image: facultyImage,
-        location: 'Uptown Residences',
-        year: '2024',
-    },
-    {
-        index: 10,
-        title: 'City Hospital Expansion',
-        category: 'Healthcare',
-        image: hospitalImage,
-        location: 'Health Avenue',
-        year: '2023',
-    },
+    { index: 1, title: 'Commercial Complex Design', category: 'Commercial', image: commercialImage, location: 'Downtown Metro City', year: '2023' },
+    { index: 2, title: 'Educational Building', category: 'Institutional', image: educationImage, location: 'University Campus', year: '2022' },
+    { index: 3, title: 'Residential Development', category: 'Residential', image: facultyImage, location: 'Coastal Heights', year: '2022' },
+    { index: 4, title: 'Healthcare Facility', category: 'Healthcare', image: hospitalImage, location: 'Central Medical District', year: '2021' },
+    { index: 5, title: 'Infrastructure Project', category: 'Infrastructure', image: infrastructureImage, location: 'Regional Highway 101', year: '2023' },
+    { index: 6, title: 'Industrial Facility', category: 'Industrial', image: commercialImage, location: 'Tech Industrial Park', year: '2021' },
+    { index: 7, title: 'Urban Office Tower', category: 'Commercial', image: commercialImage, location: 'Metro Business District', year: '2024' },
+    { index: 8, title: 'Science Research Center', category: 'Institutional', image: educationImage, location: 'Innovation Park', year: '2023' },
+    { index: 9, title: 'Luxury Apartments', category: 'Residential', image: facultyImage, location: 'Uptown Residences', year: '2024' },
+    { index: 10, title: 'City Hospital Expansion', category: 'Healthcare', image: hospitalImage, location: 'Health Avenue', year: '2023' },
 ];
 
 function preloadImages(projects) {
@@ -110,8 +36,23 @@ const Projects = () => {
     const [isPaused, setIsPaused] = useState(false);
     const [isJumping, setIsJumping] = useState(false);
     const [cardDimensions, setCardDimensions] = useState({ width: 0, gap: 0 });
+    
+    // --- RESPONSIVE STATE ---
+    // State to determine if the view is mobile, which controls the number of visible cards.
+    const [isMobile, setIsMobile] = useState(false);
+
     const intervalRef = useRef(null);
     const carouselRef = useRef(null);
+
+    // Effect to check screen size for responsiveness
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 768); // Tailwind's 'md' breakpoint
+        };
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
 
     // Preload images
     useEffect(() => {
@@ -160,13 +101,17 @@ const Projects = () => {
         };
     }, [isPaused, currentIndex, cardDimensions]);
 
+    // --- DYNAMIC VISIBLE COUNT ---
+    // Determines how many cards to show based on screen size.
+    const visibleCount = isMobile ? 1 : 4;
+
     // Effect to handle the infinite loop jump
     useEffect(() => {
         if (currentIndex >= initialProjects.length) {
             const timer = setTimeout(() => {
                 setIsJumping(true);
                 setCurrentIndex(0);
-            }, 700); // Must match the CSS transition duration
+            }, 700);
             return () => clearTimeout(timer);
         } else if (isJumping) {
             const timer = setTimeout(() => {
@@ -177,34 +122,34 @@ const Projects = () => {
     }, [currentIndex, isJumping]);
 
 
-    // Create extended array for infinite scrolling
+    // Create extended array for infinite scrolling using the dynamic visibleCount
     const extendedProjects = [
-        ...initialProjects.slice(-VISIBLE_COUNT),
+        ...initialProjects.slice(-visibleCount),
         ...initialProjects,
-        ...initialProjects.slice(0, VISIBLE_COUNT),
+        ...initialProjects.slice(0, visibleCount),
     ];
 
-    // Updated transform calculation using dynamic dimensions
+    // Transform calculation using dynamic dimensions and visibleCount
     const getTransform = () => {
         if (cardDimensions.width === 0) return 'translateX(0px)';
-        const baseTransform = (currentIndex + VISIBLE_COUNT) * (cardDimensions.width + cardDimensions.gap);
+        const baseTransform = (currentIndex + visibleCount) * (cardDimensions.width + cardDimensions.gap);
         return `translateX(-${baseTransform}px)`;
     };
 
     // Responsive card width classes
     const getCardWidthClass = () => {
-        return "w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] xl:w-[300px]";
+        // Reduced the smallest size slightly for better fit on narrow screens
+        return "w-[240px] sm:w-[260px] md:w-[260px] lg:w-[280px] xl:w-[300px]";
     };
 
-    // --- FIX: Calculate the exact width for the viewport ---
-    const viewportWidth = (VISIBLE_COUNT * cardDimensions.width) + ((VISIBLE_COUNT - 1) * cardDimensions.gap);
+    // Dynamically calculate the viewport width based on visibleCount
+    const viewportWidth = (visibleCount * cardDimensions.width) + ((visibleCount - 1) * cardDimensions.gap);
 
     return (
         <section
             id="projects"
             className="py-10 md:py-12 w-full relative overflow-hidden"
         >
-            {/* --- Video Background --- */}
             <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
                 <video
                     autoPlay
@@ -212,34 +157,29 @@ const Projects = () => {
                     muted
                     playsInline
                     className="w-full h-full object-cover"
-                    src="/pro.mp4" // Sourced from the public folder
+                    src="/pro.mp4"
                 />
-                {/* Blue tint overlay */}
                 <div className="absolute inset-0 bg-blue-900/90 z-10"></div>
             </div>
 
-            <div className="w-full max-w-[2400px]  px-2 md:px-4 lg:px-6 relative z-20">
+            <div className="w-full max-w-[2400px] px-2 md:px-4 lg:px-6 relative z-20">
                 <Card
-                    className={`${SPACING_CLASSES.COMPONENT} bg-background/80 rounded-2xl border border-white/10 relative overflow-hidden transition-all duration-300 hover:shadow-2xl`}
+                    className={`${SPACING_CLASSES.COMPONENT} bg-background/80 rounded-2xl border border-white/10 relative overflow-hidden transition-all duration-300`}
                 >
                     <div
                         className="absolute inset-0 z-0"
-                        style={{
-                            backgroundImage: `url(${StructuralEngineering})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat',
-                        }}
+                        style={{ backgroundImage: `url(${StructuralEngineering})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}
                     />
                     <div className="absolute inset-0 bg-black/25 z-10"></div>
                     
-                    <div className="relative z-20 p-6 md:p-8 lg:p-8">
-                        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+                    <div className="relative z-20 p-4 sm:p-6 md:p-8">
+                        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12">
                             <div>
-                                <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                                {/* --- Responsive Heading --- */}
+                                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                                     Featured Projects
                                 </h2>
-                                <div className="relative h-1.5 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full mb-6 overflow-hidden">
+                                <div className="relative h-1.5 w-20 bg-gradient-to-r from-primary to-primary/30 rounded-full mb-6">
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/30 animate-pulse"></div>
                                 </div>
                             </div>
@@ -255,7 +195,7 @@ const Projects = () => {
                         </div>
 
                         <div className="relative">
-                            {/* --- FIX: Viewport width is now dynamically calculated and centered --- */}
+                            {/* The viewport container is now centered and its width is dynamically calculated */}
                             <div
                                 className="overflow-hidden mx-auto"
                                 onMouseEnter={() => setIsPaused(true)}
@@ -268,9 +208,7 @@ const Projects = () => {
                                 <div
                                     ref={carouselRef}
                                     className={`flex gap-5 will-change-transform ${isJumping ? 'transition-none' : 'transition-transform duration-700 ease-in-out'}`}
-                                    style={{
-                                        transform: getTransform(),
-                                    }}
+                                    style={{ transform: getTransform() }}
                                 >
                                     {extendedProjects.map((project, idx) => (
                                         <Card
@@ -309,6 +247,7 @@ const Projects = () => {
                             </div>
                         </div>
 
+                        {/* Button is visible only on mobile screens */}
                         <div className="mt-12 text-center md:hidden">
                             <Button
                                 variant="outline"

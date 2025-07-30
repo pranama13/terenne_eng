@@ -31,13 +31,17 @@ const StatCounter = ({ value, suffix = '', duration = 2 }) => {
                 } else {
                     setCount(Math.floor(start));
                 }
-            }, 16.67); // 60fps
+            }, 16.67); // Corresponds to 60fps
 
             return () => clearInterval(timer);
         }
     }, [inView, value, duration]);
 
-    return <span ref={ref} className="text-4xl font-bold text-white">{count}{suffix}</span>;
+    return (
+        <span ref={ref} className="text-3xl sm:text-4xl font-bold text-white">
+            {count}{suffix}
+        </span>
+    );
 };
 
 const CompletionStats = () => {
@@ -54,7 +58,6 @@ const CompletionStats = () => {
     }, [controls, inView]);
 
     return (
-        // The `bg-[#212121]` has been removed to allow the video background to show.
         <section className="py-3 md:py-8 w-full relative overflow-hidden">
             {/* --- Video Background and Overlay --- */}
             <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
@@ -69,11 +72,13 @@ const CompletionStats = () => {
                 <div className="absolute inset-0 bg-blue-900/90 z-10" />
             </div>
 
-            {/* Content container, sits on top of the video background */}
-            <div className="w-full max-w-[1400vh] px-4 md:px-6 lg:px-6 relative z-20">
-                <div className="relative rounded-xl border border-white/10 shadow-2xl overflow-hidden bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] p-[-10vh] md:p-12 lg:p-20">
+            {/* --- RESPONSIVE CONTAINER --- */}
+            {/* Replaced invalid max-w-[1400vh] with a standard max-w-7xl and mx-auto for centering. */}
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-20">
+                {/* --- RESPONSIVE PADDING --- */}
+                {/* Replaced invalid p-[-10vh] with responsive padding classes (p-8, md:p-12, etc.). */}
+                <div className="relative rounded-xl border border-white/10 shadow-2xl overflow-hidden bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] p-8 md:p-12 lg:p-16">
                     
-                    {/* Background image layer (PRESERVED AS REQUESTED) */}
                     <div
                         className="absolute inset-0 z-0"
                         style={{
@@ -83,7 +88,6 @@ const CompletionStats = () => {
                         }}
                     />
                     
-                    {/* Subtle shade overlay for the photo */}
                     <div className="absolute inset-0 z-10 bg-black/45 pointer-events-none" />
                     
                     <motion.div
@@ -101,9 +105,9 @@ const CompletionStats = () => {
                                 }
                             }
                         }}
+                        // The existing grid classes provide the core responsiveness (2 columns on mobile, 4 on desktop).
                         className={`relative grid grid-cols-2 md:grid-cols-4 ${SPACING_CLASSES.GRID} text-center`}
                     >
-                        {/* Stats content */}
                         {statsData.map((stat, index) => (
                             <motion.div
                                 key={index}
@@ -113,10 +117,13 @@ const CompletionStats = () => {
                                 }}
                                 className="flex flex-col items-center relative z-20"
                             >
+                                {/* The StatCounter now has responsive font size */}
                                 <StatCounter value={stat.value} suffix={stat.suffix} />
                                 <div className="h-1 w-12 bg-white/60 rounded-full my-3"></div>
-                                <div className="text-white/90 text-sm uppercase tracking-wider">{stat.label}</div>
-                                {/* Vertical line except for last column */}
+                                {/* --- RESPONSIVE FONT SIZE --- */}
+                                <div className="text-white/90 text-xs sm:text-sm uppercase tracking-wider">{stat.label}</div>
+                                
+                                {/* Vertical line is correctly hidden on mobile (md:block) */}
                                 {index !== statsData.length - 1 && (
                                     <div className="hidden md:block absolute top-1/4 right-0 h-2/4 w-px bg-white/30"></div>
                                 )}

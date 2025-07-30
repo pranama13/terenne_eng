@@ -56,7 +56,7 @@ const serviceCategories = [
   }
 ];
 
-// --- NEW: Data for Software Training Dropdown ---
+// Data for Software Training Dropdown
 const softwareTrainingLinks = [
     { label: "BIM", to: "/software-training/bim" },
     { label: "Digital Twin", to: "/software-training/digital-twin" },
@@ -96,9 +96,13 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
       
       <div className="w-full max-w-[2400px] mx-auto px-2 py-1">
         <div className="flex items-center justify-between">
-            <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
-                <LogoTriangle />
-            </div>
+            {/* --- LOGO WRAPPED IN LINK --- */}
+            {/* The LogoTriangle is now a clickable link to the homepage */}
+            <Link to="/" aria-label="Go to Home">
+                <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
+                    <LogoTriangle />
+                </div>
+            </Link>
 
           <div className="flex-1 flex justify-center">
             <NavigationMenu className="hidden md:flex items-center">
@@ -167,7 +171,6 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
-                {/* --- UPDATED SOFTWARE EXPERTISE MENU --- */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>SOFTWARE TRAINING</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">

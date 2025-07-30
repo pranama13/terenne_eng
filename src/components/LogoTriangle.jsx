@@ -106,9 +106,9 @@ const LogoTriangle = () => {
         {/* Data points - engineering style */}
         <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="flex flex-col text-right text-xs text-blue-400 font-mono">
-            <span className="animate-pulse">X: 100%</span>
-            <span className="animate-pulse" style={{ animationDelay: '0.5s' }}>Y: 100%</span>
-            <span className="animate-pulse" style={{ animationDelay: '1s' }}>Z: ACTIVE</span>
+            <span className="animate-pulse"></span>
+            <span className="animate-pulse" style={{ animationDelay: '0.5s' }}></span>
+            <span className="animate-pulse" style={{ animationDelay: '1s' }}></span>
           </div>
         </div>
 
@@ -146,7 +146,7 @@ const LogoTriangle = () => {
       {/* Technical readout */}
       <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <div className="text-xs text-blue-400 font-mono text-center">
-          <div className="animate-pulse">SYSTEM: ONLINE</div>
+          <div className="animate-pulse">Terrene</div>
         </div>
       </div>
 

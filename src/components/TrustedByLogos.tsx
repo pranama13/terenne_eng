@@ -57,7 +57,6 @@ const TrustedByLogos = () => {
   const visibleLogos = logoList.slice(0, VISIBLE_COUNT + 1);
 
   return (
-    // The `bg-[#212121]` class has been removed to allow the video background to show.
     <section className="py-16 md:py-20 w-full relative overflow-hidden">
       {/* --- Video Background and Overlay --- */}
       <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
@@ -73,15 +72,23 @@ const TrustedByLogos = () => {
       </div>
 
       <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16 relative z-20">
-        {/* Card wrapper with its own background image */}
         <div
-          className="rounded-2xl border border-white p-4 md:p- relative overflow-hidden"
+          className="rounded-2xl border border-white p-8 md:p-12 relative overflow-hidden"
           style={{
             backgroundImage: `url(${logobbackground})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
         >
+          {/* UPDATED TITLE SECTION */}
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-black/60">
+              Our Valued Customers
+            </h2>
+            <div className="mt-3 h-1 w-24 bg-black/60 mx-auto rounded-full"></div>
+          </div>
+          {/* END OF UPDATED TITLE SECTION */}
+
           <div className="relative z-10">
             <div
               className="overflow-hidden"

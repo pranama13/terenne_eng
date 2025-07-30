@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
-import History from "./pages/Faq";
 import Team from "./pages/Team";
 import Mission from "./pages/Mission";
 import StructuralDesign from "./pages/StructuralDesign";
@@ -22,8 +21,8 @@ import Commercial from "./pages/commercial/Commercial";
 import Industrial from "./pages/Industrial";
 import Career from "./pages/Career";
 import Inquiry from "./pages/Inquiry";
-import Services from "./components/Services";
-import Faq from "./pages/Faq";
+
+import Faq from "./pages/Faq"; // Removed the duplicate 'History' import
 import Whyterrene from "./pages/whyterrene";
 import Sustainability from "./pages/sustainability";
 import Qualitypolicy from "./pages/qualitypolicy";
@@ -36,8 +35,8 @@ import MidlevelPackage from "./pages/midlevelPackage";
 import HighendPackages from "./pages/highendPackages";
 import InternationalPackage from "./pages/internationalPackage";
 import CorporatePackages from "./pages/corporatePackages";
-// --- NEW: Import the ProjectsPage component ---
-import ProjectsPage from "./pages/ProjectsPage"; // Adjust the path if you saved ProjectsPage.tsx elsewhere
+import ProjectsPage from "./pages/ProjectsPage"; 
+import StickyButtons from "./components/StickyButtons"; 
 
 
 const queryClient = new QueryClient();
@@ -48,6 +47,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        {/* The Routes component handles page content */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -70,7 +70,7 @@ const App = () => (
           <Route path="/whyterrene" element={<Whyterrene />} />
           <Route path="/qualitypolicy" element={<Qualitypolicy />} />
           <Route path="/sustainability" element={<Sustainability />} />
-          <Route path="/services" element={<Services />} />
+          
           <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/packages" element={<Packages />} />
@@ -80,13 +80,13 @@ const App = () => (
           <Route path="/packages/international" element={<InternationalPackage />} />
           <Route path="/packages/corporate" element={<CorporatePackages />} />
           <Route path="/blog" element={<Blog />} />
-          
-          {/* --- NEW: Add the route for the projects page --- */}
           <Route path="/projects" element={<ProjectsPage />} />
-
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+
+        {/* StickyButtons component persists across all pages */}
+        <StickyButtons />
+
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

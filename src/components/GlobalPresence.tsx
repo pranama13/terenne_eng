@@ -11,19 +11,31 @@ function preloadMapImage(src: string) {
   img.src = src;
 }
 
+// --- UPDATED COUNTRY DATA ---
 const countryData = {
-  Canada: 'Information about Canada...',
-  'United States': 'Information about the United States...',
-  London: 'Information about London...',
-  France: 'Information about France...',
-  Germany: 'Information about Germany...',
-  Switzerland: 'Information about Switzerland...',
-  SriLanka: 'Information about Sri Lanka...',
-  Australia: 'Information about Australia...',
+  'Sri Lanka': 'Information about our operations in Sri Lanka...',
+  'Australia': 'Information about our operations in Australia...',
+  'Singapore': 'Information about our operations in Singapore...',
+  'Maldives': 'Information about our operations in Maldives...',
+  'UAE': 'Information about our operations in UAE...',
+  'Oman': 'Information about our operations in Oman...',
+  'Saudi Arabia': 'Information about our operations in Saudi Arabia...',
+  'Qatar': 'Information about our operations in Qatar...',
+  'New Zealand': 'Information about our operations in New Zealand...',
+  'United Kingdom': 'Information about our operations in the United Kingdom...',
+  'Canada': 'Information about our operations in Canada...',
+  'Germany': 'Information about our operations in Germany...',
 };
 
+// --- UPDATED COUNTRY LIST FOR RENDERING ---
+const countryList = [
+    'Sri Lanka', 'Australia', 'Singapore', 'Maldives',
+    'UAE', 'Oman', 'Saudi Arabia', 'Qatar',
+    'New Zealand', 'United Kingdom', 'Canada', 'Germany'
+];
+
+
 const GlobalPresence = () => {
-  const [activeCountry, setActiveCountry] = useState<string | null>(null);
   const [openCountry, setOpenCountry] = useState<string | null>(null);
   const { ref, inView } = useInView({
     threshold: 0.2,
@@ -40,11 +52,21 @@ const GlobalPresence = () => {
   }, []);
 
   return (
-    // --- GAPS REDUCED ---
-    // Vertical padding (py) has been reduced.
-    <section className="py-4 md:py-6 bg-[#212121] relative overflow-hidden w-full">
-      {/* --- GAPS REDUCED --- */}
-      {/* Horizontal padding (px) has been reduced and max-width removed to decrease side gaps. */}
+    <section className="py-4 md:py-6 relative overflow-hidden w-full">
+      {/* --- Video Background --- */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+          <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+              src="/pro.mp4" // Assumes video is in /public/pro.mp4
+          />
+          {/* Dark overlay for content readability */}
+          <div className="absolute inset-0 bg-blue-900/90 z-10"></div>
+      </div>
+
       <div className="w-full mx-auto px-2 md:px-4 relative z-20">
         <div className="grid lg:grid-cols-2 gap-0 items-stretch rounded-2xl overflow-hidden shadow-2xl border border-white/10">
           {/* Text content (left) */}
@@ -61,14 +83,9 @@ const GlobalPresence = () => {
                 We proudly serve clients across the globe, delivering excellence in
                 every region.
               </p>
+              {/* --- UPDATED COUNTRY LIST RENDER --- */}
               <ul className="space-y-3 text-white text-base font-medium">
-                {[
-                  'Canada',
-                  'United States',
-                  'Germany',
-                  'Australia',
-                  'SriLanka'
-                ].map((country) => (
+                {countryList.map((country) => (
                   <li key={country}>
                     <div
                       className={`flex items-center justify-between px-5 py-4 border border-white bg-white/5 cursor-pointer transition-all duration-300 ${
@@ -118,9 +135,7 @@ const GlobalPresence = () => {
           </div>
           {/* Map image (right, more than center) */}
           <div className="relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex items-center justify-end rounded-r-2xl overflow-hidden border border-white/10 bg-black/40 shadow-xl">
-            {/* White glowing shade */}
             <div className="absolute -inset-4 bg-gradient-to-r from-white/10 via-white/20 to-white/10 rounded-[inherit] blur-2xl opacity-80 z-0"></div>
-            {/* Blue light accents */}
             <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-blue-500/10 blur-3xl"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl"></div>
             <img

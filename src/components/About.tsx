@@ -67,20 +67,32 @@ const About = () => {
 	}, [isImageVisible, showSecondImage]);
 
 	return (
-		// --- MARGINS ADJUSTED ---
-		// A small amount of vertical padding (py-8) has been added back.
 		<section
 			id="about"
-			className="bg-[#212121] overflow-hidden w-full relative py-8"
+			className="overflow-hidden w-full relative py-8"
 		>
-			{/* --- MARGINS ADJUSTED --- */}
-            {/* A small amount of horizontal padding (px-4 md:px-8) has been added back. */}
+			{/* Hero Video Background */}
+			<video 
+				autoPlay 
+				loop 
+				muted 
+				playsInline
+				className="absolute inset-0 w-full h-full object-cover z-0"
+			>
+				<source src="/hero.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
+
+			{/* Blue Tint Overlay */}
+			<div className="absolute inset-0 bg-blue-900/90 z-10"></div>
+
+			{/* Additional Dark Overlay for Better Text Readability */}
+			<div className="absolute inset-0 bg-black/30 z-15"></div>
+
 			<div className="w-full relative z-20 px-4 md:px-8">
 				{/* Main content */}
 				<div ref={contentRef} className={`transform transition-all duration-700 ${animated.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 					<div 
-						// --- BORDERS RESTORED ---
-                        // The rounded-2xl class has been added back to give the component soft corners.
 						className="grid lg:grid-cols-2 gap-0 items-stretch overflow-hidden transition-all duration-300 hover:shadow-2xl rounded-2xl"
 						style={{
 							boxShadow: SHADOW_PRESETS.ABOUT.style,
@@ -88,8 +100,7 @@ const About = () => {
 					>
 						{/* Text content */}
 						<div 
-                            // Padding is kept generous for internal spacing.
-                            className="flex flex-col justify-center p-8 md:p-12 lg:p-16 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] border-r border-white/10 relative overflow-hidden transition-all duration-300"
+                            className="flex flex-col justify-center p-8 md:p-12 lg:p-16 bg-gradient-to-br from-[#0E75A0]/90 to-[#0a5a7a]/90 backdrop-blur-sm border-r border-white/10 relative overflow-hidden transition-all duration-300"
 							style={{ 
 								boxShadow: DARK_THEME_SHADOWS.ELEVATED.MEDIUM,
 							}}>
@@ -122,7 +133,7 @@ const About = () => {
 								</div>
 								
 								<p className="text-white/90 text-lg leading-relaxed max-w-lg mb-4">
-									Established with a vision to transform the engineering landscape, Terrene Engineering (Private) Limited has been at the forefront of innovative solutions for over two decades. Our team of licensed professional engineers specializes in structural design, civil engineering, and architectural consulting, delivering projects that exceed industry standards while maintaining the highest levels of safety and sustainability.
+									Terrene Engineering (Pvt) Ltd is a globally trusted name in engineering consultancy and contracting. With over 20 years of proven expertise, we deliver end-to-end engineering solutions that merge innovation, precision, and sustainability. Our team of experienced professionals operates across Sri Lanka, Maldives, Oman, UAE, Qatar, KSA, Australia, Singapore, New Zealand, UK, Canada, Germany, and serves clients around the world.
 								</p>
 								
 								<div className="flex flex-wrap gap-4 mb-6">
@@ -152,7 +163,7 @@ const About = () => {
 							</div>
 						</div>
 						
-						{/* Image */}
+						{/* Image and Video Container */}
 						<div
 							ref={imageRef}
 							className="relative min-h-[250px] md:min-h-[300px] lg:min-h-[350px] flex items-stretch overflow-hidden border-l border-white/10 transition-all duration-300"
@@ -165,6 +176,21 @@ const About = () => {
 							onMouseEnter={() => setIsHovering(true)}
 							onMouseLeave={() => setIsHovering(false)}
 						>
+                            {/* About Video Background */}
+                            <video 
+                                autoPlay 
+                                loop 
+                                muted 
+                                playsInline
+                                className="absolute inset-0 w-full h-full object-cover z-0"
+                            >
+                                <source src="/about.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+
+                            {/* Blue Tint Overlay for right side video */}
+                            <div className="absolute inset-0 bg-blue-900/40 z-5"></div>
+
 							{/* First image */}
 							<img
 								src={homepageBuildingImage}
@@ -191,7 +217,7 @@ const About = () => {
 								}}
 							/>
 							<div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-[#141414]/95 via-[#141414]/70 to-transparent pointer-events-none z-30"></div>
-							<div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none"></div>
+							<div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none z-30"></div>
 						</div>
 					</div>
 				</div>

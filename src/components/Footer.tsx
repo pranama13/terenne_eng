@@ -1,8 +1,16 @@
 import React from 'react';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { SPACING_CLASSES } from '@/lib/spacing';
 // Import logo from assets folder
 import Logo2 from '../assert/Logo2.png';
+
+// --- NEW: Custom SVG component for the TikTok icon ---
+const TikTokIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.03-4.63-1.1-6.22-3.04-1.3-1.59-1.96-3.6-1.93-5.56.02-1.52.53-3.04 1.52-4.25 1.08-1.31 2.7-1.99 4.33-1.98.01 1.54-.01 3.08-.01 4.61-.97.12-1.93.57-2.64 1.31-.69.73-1.03 1.72-1.02 2.74.01 1.09.45 2.19 1.26 2.94.79.74 1.83 1.14 2.87 1.13.99 0 1.97-.34 2.73-.98.6-.5 1-1.16 1.23-1.88.08-1.57.08-3.14.08-4.71.01-1.19-.42-2.37-1.12-3.29-.81-1.09-2.06-1.64-3.32-1.61.02-1.56.01-3.11.01-4.67.13-1.59.76-3.14 1.87-4.25Z"/>
+    </svg>
+);
 
 const Footer = () => {
   return (
@@ -45,18 +53,18 @@ const Footer = () => {
               <h4 className="font-semibold text-lg mb-4">Services</h4>
               <div className="flex flex-col sm:flex-row gap-8">
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Structural Engineering</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Civil Engineering</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Architectural Drafting</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Project Management</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Code Compliance</a></li>
+                  <li><Link to="/structural-consultancy" className="text-gray-300 hover:text-white transition-colors">Structural Engineering</Link></li>
+                  <li><Link to="/civil-engineering" className="text-gray-300 hover:text-white transition-colors">Civil Engineering</Link></li>
+                  <li><Link to="/architectural-consulting" className="text-gray-300 hover:text-white transition-colors">Architectural Drafting</Link></li>
+                  <li><Link to="/project-management" className="text-gray-300 hover:text-white transition-colors">Project Management</Link></li>
+                  <li><Link to="/code-compliance" className="text-gray-300 hover:text-white transition-colors">Code Compliance</Link></li>
                 </ul>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">MEP Engineering</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Interior Design Services</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">BIM Services</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Laboratory Testing</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Quantity Surveying</a></li>
+                  <li><Link to="/mep-engineering" className="text-gray-300 hover:text-white transition-colors">MEP Engineering</Link></li>
+                  <li><Link to="/interior-design" className="text-gray-300 hover:text-white transition-colors">Interior Design Services</Link></li>
+                  <li><Link to="/bim-services" className="text-gray-300 hover:text-white transition-colors">BIM Services</Link></li>
+                  <li><Link to="/laboratory-testing" className="text-gray-300 hover:text-white transition-colors">Laboratory Testing</Link></li>
+                  <li><Link to="/quantity-surveying" className="text-gray-300 hover:text-white transition-colors">Quantity Surveying</Link></li>
                 </ul>
               </div>
             </div>
@@ -66,23 +74,23 @@ const Footer = () => {
               <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
               <div className="flex flex-col sm:flex-row gap-8">
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#home" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
-                  <li><a href="#about" className="text-gray-300 hover:text-white transition-colors">About Us</a></li>
-                  <li><a href="#projects" className="text-gray-300 hover:text-white transition-colors">Projects</a></li>
-                  <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Careers</a></li>
+                  <li><Link to="/" className="text-gray-300 hover:text-white transition-colors">Home</Link></li>
+                  <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
+                  <li><Link to="/projects" className="text-gray-300 hover:text-white transition-colors">Projects</Link></li>
+                  <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
+                  <li><Link to="/career" className="text-gray-300 hover:text-white transition-colors">Careers</Link></li>
                 </ul>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Sustainability</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Blog</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">FAQs</a></li>
+                  <li><Link to="/privacy-policy" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</Link></li>
+                  <li><Link to="/terms-of-service" className="text-gray-300 hover:text-white transition-colors">Terms of Service</Link></li>
+                  <li><Link to="/sustainability" className="text-gray-300 hover:text-white transition-colors">Sustainability</Link></li>
+                  <li><Link to="/blog" className="text-gray-300 hover:text-white transition-colors">Blog</Link></li>
+                  <li><Link to="/faq" className="text-gray-300 hover:text-white transition-colors">FAQs</Link></li>
                 </ul>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Qulity Policy</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Team</a></li>
-                  <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Testimonial</a></li>
+                  <li><Link to="/quality-policy" className="text-gray-300 hover:text-white transition-colors">Quality Policy</Link></li>
+                  <li><Link to="/team" className="text-gray-300 hover:text-white transition-colors">Team</Link></li>
+                  <li><Link to="/testimonial" className="text-gray-300 hover:text-white transition-colors">Testimonial</Link></li>
                 </ul>
               </div>
             </div>
@@ -103,43 +111,22 @@ const Footer = () => {
                   <Mail className="w-5 h-5 text-primary flex-shrink-0" />
                   <span className="text-gray-300">info@terreneeng.com</span>
                 </div>
+                {/* --- SOCIAL MEDIA ICONS UPDATED --- */}
                 <div className="flex space-x-4 pt-2 justify-start pl-0 ml-0">
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src="https://img.icons8.com/fluent/28/000000/facebook-new.png" 
-                      alt="Facebook"
-                      className="w-6 h-6" 
-                    />
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors">
+                    <Facebook className="w-6 h-6" />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src="https://img.icons8.com/fluent/28/000000/linkedin-2.png" 
-                      alt="LinkedIn" 
-                      className="w-6 h-6"
-                    />
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                    <Linkedin className="w-6 h-6" />
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src="https://img.icons8.com/fluent/28/000000/instagram-new.png" 
-                      alt="Instagram" 
-                      className="w-6 h-6"
-                    />
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
+                    <Instagram className="w-6 h-6" />
                   </a>
-                  <a href="https://wa.me/your-number" target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src="https://img.icons8.com/color/28/000000/whatsapp.png" 
-                      alt="WhatsApp" 
-                      className="w-6 h-6"
-                    />
+                   <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-600 transition-colors">
+                    <Youtube className="w-6 h-6" />
                   </a>
-                  <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="inline-flex">
-                    <div className="bg-white rounded-sm w-6 h-6 flex items-center justify-center">
-                      <img 
-                        src="https://img.icons8.com/ios-filled/24/000000/tiktok--v1.png" 
-                        alt="TikTok" 
-                        className="w-5 h-5"
-                      />
-                    </div>
+                   <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                    <TikTokIcon />
                   </a>
                 </div>
               </div>

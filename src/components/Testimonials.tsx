@@ -55,22 +55,18 @@ const Testimonials = () => {
 
     // Auto scroll functionality
     useEffect(() => {
-        // Clear any existing timer
         if (timerRef.current) {
             clearInterval(timerRef.current);
         }
         
-        // Set up auto-scroll timer if not hovering
         if (!isHovering) {
             timerRef.current = setInterval(() => {
                 setActiveIndex(current => {
-                    // Move to next slide or loop back to beginning
                     return current < maxIndex ? current + 1 : 0;
                 });
-            }, 5000); // Change slides every 5 seconds
+            }, 5000); 
         }
         
-        // Clean up timer when component unmounts or dependencies change
         return () => {
             if (timerRef.current) {
                 clearInterval(timerRef.current);
@@ -87,12 +83,22 @@ const Testimonials = () => {
     };
 
     return (
-        // --- GAPS REDUCED ---
-        // Vertical padding (py) has been reduced.
-        <section className="py-8 md:py-12 bg-[#212121] w-full relative overflow-hidden">
-            {/* --- GAPS REDUCED --- */}
-            {/* Horizontal padding (px) has been reduced and max-width removed. */}
-            <div className="w-full mx-auto px-4 md:px-8 relative z-20">
+        // The `bg-[#212121]` has been removed to show the video background.
+        <section className="py-8 md:py-10 w-full relative overflow-hidden">
+            {/* --- Video Background and Overlay --- */}
+            <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                    src="/about.mp4"
+                />
+                <div className="absolute inset-0 bg-blue-900/90 z-10" />
+            </div>
+            
+            <div className="w-full mx-auto px-4 md:px-6 relative z-20">
                 <div className="relative">
                     {/* Blurred background image for the main card */}
                     <div
@@ -101,7 +107,7 @@ const Testimonials = () => {
                             backgroundImage: `url(${client})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
-                            opacity: 1, // Changed from 0.75 to 1 (full opacity)
+                            opacity: 1,
                         }}
                     ></div>
                     {/* Main testimonial card content */}
@@ -109,7 +115,7 @@ const Testimonials = () => {
                         <div className="text-center mb-12">
                             <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">Voices of Trust</h2>
                             <p className="text-white/ max-w-2xl mx-auto">
-                                Our reputation speaks through the words of those we've served. Read what distinguished clients say about our engineering excellence and dedicated service.
+                                Hear directly from our valued clients as they share their experiences with Terrene Engineering’s commitment to quality, innovation, and dependable service across the globe..
                             </p>
                         </div>
 
@@ -129,7 +135,6 @@ const Testimonials = () => {
                                             className="w-full md:w-1/2 flex-shrink-0 px-4 mb-8"
                                         >
                                             <div className="relative">
-                                                {/* Glowing border around the review card */}
                                                 <div className="absolute inset-0 rounded-xl pointer-events-none z-0">
                                                     <div className="absolute inset-0 rounded-xl border-2 border-white/20 blur-[2px] opacity-80"></div>
                                                     <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-white/10 via-primary/10 to-white/10 blur-lg opacity-60"></div>

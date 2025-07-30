@@ -40,9 +40,9 @@ const Hero = () => {
         <div className="container mx-auto px-4 pl-18 md:pl-24 lg:pl-36 flex flex-col items-start justify-center text-left mt-4 md:mt-8">
             <h1 className="font-extrabold text-white mb-2 leading-tight drop-shadow-2xl"
                 style={{ fontSize: "4.9rem", lineHeight: 0.85 }}>
-                Shaping tomorrow with<br />
+                Engineering excellence <br />
                 <span className="font-extrabold" style={{ fontSize: "3.6rem", marginTop: "-0.5rem", display: "inline-block" }}>
-                Visionary engineering
+                is at the heart of everything we do
                 </span>
             </h1>
             <br />
@@ -59,12 +59,12 @@ const Hero = () => {
                 MozOsxFontSmoothing: "grayscale"
                 }}
             >
-                delivering solutions for some of the world's largest and most complex projects. Our approach is guided by our unique engineering philosophies:
+                As trusted engineering consultants and contractors, we design, build, and maintain innovative solutions that meet today’s challenges while ensuring sustainability for a better tomorrow
             </p>
             <br />
             <div className="mt-2 mb-10">
                 <span className="font-extrabold text-white text-2xl md:text-3xl tracking-wide">
-                DESIGN.BUILD.SUSTAINABLE
+                DESIGN | BUILD | SUSTAINABLE
                 </span>
             </div>
         </div>

@@ -1,29 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // Example logo imports (replace with your actual logo paths)
-import logo1 from "../assert/logos/company1.png";
-import logo2 from "../assert/logos/company2.png";
-import logo3 from "../assert/logos/company3.png";
-import logo4 from "../assert/logos/company4.png";
-import logo5 from "../assert/logos/company5.png";
-import logo6 from "../assert/logos/company6.png"; // Add new logo import
+import logo1 from "../assert/logos/logo1.png";
+import logo2 from "../assert/logos/logo2.png";
+import logo3 from "../assert/logos/logo3.png";
+import logo4 from "../assert/logos/logo4.png";
+import logo5 from "../assert/logos/logo5.png";
+import logo6 from "../assert/logos/logo6.png";
+import logo7 from "../assert/logos/logo7.png";
+import logo8 from "../assert/logos/logo8.png";
+import logo9 from "../assert/logos/logo9.png";
+import logo10 from "../assert/logos/logo10.png";
+import logo12 from "../assert/logos/logo11.png";
+import logo11 from "../assert/logos/logo12.png";
 import logobbackground from "../assert/career.jpg";
 
-const logos = [logo1, logo2, logo3, logo4, logo5, logo6]; // Add logo6 to array
+const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12];
 const CARD_WIDTH = 224; // w-56 = 224px
 const CARD_GAP = 64;    // gap-16 = 64px
-const VISIBLE_COUNT = 5; // Changed from 3 to 4
+const VISIBLE_COUNT = 5;
 const SLIDE_INTERVAL = 2500; // ms (pause before sliding)
 const ANIMATION_DURATION = 700; // ms (slide animation duration)
 
 const TrustedByLogos = () => {
   const [logoList, setLogoList] = useState([...logos]);
   const [isSliding, setIsSliding] = useState(false);
-  const [isPaused, setIsPaused] = useState(false); // <-- Add pause state
+  const [isPaused, setIsPaused] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (isPaused) return; // Don't slide if paused
+    if (isPaused) return;
 
     let slideTimeout: NodeJS.Timeout;
     let pauseTimeout: NodeJS.Timeout;
@@ -46,16 +52,29 @@ const TrustedByLogos = () => {
       clearTimeout(slideTimeout);
       clearTimeout(pauseTimeout);
     };
-  }, [logoList, isPaused]); // <-- depend on isPaused
+  }, [logoList, isPaused]);
 
-  // Get the visible logos for the current window
-  const visibleLogos = logoList.slice(0, VISIBLE_COUNT + 1); // +1 for smooth slide
+  const visibleLogos = logoList.slice(0, VISIBLE_COUNT + 1);
 
   return (
-    <section className="py-16 md:py-20 bg-[#212121] w-full relative overflow-hidden">
+    // The `bg-[#212121]` class has been removed to allow the video background to show.
+    <section className="py-16 md:py-20 w-full relative overflow-hidden">
+      {/* --- Video Background and Overlay --- */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          src="/pro.mp4"
+        />
+        <div className="absolute inset-0 bg-blue-900/90 z-10" />
+      </div>
+
       <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16 relative z-20">
-        {/* Card wrapper with ONLY background image */}
-        <div 
+        {/* Card wrapper with its own background image */}
+        <div
           className="rounded-2xl border border-white p-4 md:p- relative overflow-hidden"
           style={{
             backgroundImage: `url(${logobbackground})`,

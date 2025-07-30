@@ -18,30 +18,36 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Email",
-      info: "info@terreneeng.com",
+      info: "info@terreneengineering.com",
       subtitle: "24/7 Support"
     },
-    {
-      icon: <MapPin className="w-5 h-5" />,
-      title: "Office",
-      info: "123 Engineering Lane, Colombo 03",
-      subtitle: "Sri Lanka"
-    },
+   
     {
       icon: <Clock className="w-5 h-5" />,
       title: "Hours",
-      info: "Mon-Fri: 8:00 AM - 6:00 PM",
-      subtitle: "Sat: 9:00 AM - 2:00 PM"
+      info: "Mon- Sun: 7:00 AM - 10:00 PM",
+      
     }
   ];
 
   return (
-    // --- GAPS REDUCED ---
-    // Vertical padding has been reduced for a more compact layout.
-    <section id="contact" className="py-8 md:py-12 bg-[#212121] w-full">
-      {/* --- GAPS REDUCED --- */}
-      {/* Horizontal padding and max-width have been adjusted for consistency. */}
-      <div className="w-full max-w-9xl mx-auto px-4 md:px-8">
+    // The `bg-[#212121]` has been removed to allow the video background to show.
+    <section id="contact" className="py-2 md:py-4 w-full relative overflow-hidden">
+      {/* --- Video Background and Overlay --- */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+          <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+              src="/about.mp4"
+          />
+          <div className="absolute inset-0 bg-blue-900/90 z-10" />
+      </div>
+
+      {/* The content is given a relative z-index to appear on top of the video */}
+      <div className="w-full max-w-9xl mx-auto px-4 md:px-8 relative z-10">
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Information Section */}
           <div className="lg:order-2">
@@ -52,8 +58,8 @@ const Contact = () => {
                   <Phone className="w-5 h-5 text-white flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-white">Phone</h3>
-                    <p className="text-gray-200">+94 11 234 5678</p>
-                    <p className="text-gray-200">+94 77 123 4567</p>
+                    <p className="text-gray-200">+94 77 523 5572</p>
+                    <p className="text-gray-200">+94 74 022 6660</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -64,25 +70,14 @@ const Contact = () => {
                     <p className="text-gray-200">projects@terreneengineering.com</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-white flex-shrink-0 mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-white">Office Address</h3>
-                    <p className="text-gray-200">
-                      123 Engineering Plaza,<br />
-                      Colombo 03,<br />
-                      Sri Lanka
-                    </p>
-                  </div>
-                </div>
+                
                 <div className="flex items-start space-x-3">
                   <Clock className="w-5 h-5 text-white flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-white">Business Hours</h3>
                     <p className="text-gray-200">
-                      Monday - Friday: 8:00 AM - 6:00 PM<br />
-                      Saturday: 8:00 AM - 1:00 PM<br />
-                      Sunday: Closed
+                      Monday - Sunday: 7:00 AM - 10:00 PM<br />
+                      
                     </p>
                   </div>
                 </div>

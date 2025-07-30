@@ -12,7 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import LogoTriangle from './LogoTriangle';
 
-// Data for services mega menu (unchanged)
+// Data for services mega menu
 const serviceCategories = [
   {
     category: "Architectural",
@@ -55,6 +55,16 @@ const serviceCategories = [
     ]
   }
 ];
+
+// --- NEW: Data for Software Training Dropdown ---
+const softwareTrainingLinks = [
+    { label: "BIM", to: "/software-training/bim" },
+    { label: "Digital Twin", to: "/software-training/digital-twin" },
+    { label: "AI in Engineering", to: "/software-training/ai-engineering" },
+    { label: "3D Visualization", to: "/software-training/3d-visualization" },
+    { label: "Construction Project Management", to: "/software-training/cpm" },
+];
+
 const services = serviceCategories.flatMap(category => category.services);
 
 interface HeaderProps {
@@ -72,7 +82,6 @@ interface HeaderProps {
 
 const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // --- FIX: State to track the hovered service category ---
   const [hoveredCategory, setHoveredCategory] = useState<number>(0);
 
   const headerClasses = mode === 'transparent'
@@ -87,12 +96,10 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
       
       <div className="w-full max-w-[2400px] mx-auto px-2 py-1">
         <div className="flex items-center justify-between">
-            {/* --- LOGO MOVED TO THE LEFT --- */}
             <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
                 <LogoTriangle />
             </div>
 
-          {/* Navigation - Centered */}
           <div className="flex-1 flex justify-center">
             <NavigationMenu className="hidden md:flex items-center">
               <NavigationMenuList>
@@ -117,24 +124,20 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
-                {/* --- UPDATED SERVICES MENU --- */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger 
                     className={navTextClass}
-                    // Reset to the first category when the menu is opened
                     onMouseEnter={() => setHoveredCategory(0)}
                   >
                     SERVICES
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                     <div className="w-[800px] p-6 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 flex gap-6">
-                      {/* Main Categories List */}
                       <ul className="w-1/4 space-y-2 border-r border-white/10 pr-4">
                         {serviceCategories.map((category, idx) => (
                            <li 
                              className="group" 
                              key={idx}
-                             // --- FIX: Update the hovered category state on mouse enter ---
                              onMouseEnter={() => setHoveredCategory(idx)}
                            >
                              <Link to="#" className="flex justify-between items-center p-2 text-sm text-white hover:bg-white/10 rounded transition-colors">
@@ -144,9 +147,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                            </li>
                         ))}
                       </ul>
-                      {/* Sub-services display area */}
                       <div className="w-3/4">
-                        {/* --- FIX: Dynamically render sub-services based on the hovered category --- */}
                         {serviceCategories[hoveredCategory] && (
                          <div>
                           <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">{serviceCategories[hoveredCategory].category}</h5>
@@ -165,17 +166,28 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+                
+                {/* --- UPDATED SOFTWARE EXPERTISE MENU --- */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={navTextClass}>SOFTWARE EXPERTISE</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className={navTextClass}>SOFTWARE TRAINING</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
-                    <div className="w-48 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
-                      <NavigationMenuLink asChild><Link to="/autocad" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">AutoCAD</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/revit" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Revit</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/etabs" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">ETABS</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/staad-pro" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">STAAD Pro</Link></NavigationMenuLink>
+                    <div className="w-64 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
+                      {softwareTrainingLinks.map((link, idx) => (
+                        <NavigationMenuLink asChild key={idx}>
+                          <Link to={link.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">{link.label}</Link>
+                        </NavigationMenuLink>
+                      ))}
+                      <div className="border-t border-white/10 mt-2 pt-2">
+                         <NavigationMenuLink asChild>
+                            <Link to="/software-training" className="block px-3 py-2 text-sm text-primary font-semibold hover:bg-white/10 rounded">
+                                View More
+                            </Link>
+                         </NavigationMenuLink>
+                      </div>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>PACKAGES</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
@@ -188,9 +200,17 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
+                
                 <NavigationMenuItem>
-                  <Link to="/projects" className={`${navTextClass} font-bold`}>PROJECTS</Link>
+                  <NavigationMenuTrigger className={navTextClass}>PROJECTS</NavigationMenuTrigger>
+                  <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
+                    <div className="w-48 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
+                      <NavigationMenuLink asChild><Link to="/ongoing-projects" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Ongoing Projects</Link></NavigationMenuLink>
+                      <NavigationMenuLink asChild><Link to="/completed-projects" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Completed Projects</Link></NavigationMenuLink>
+                    </div>
+                  </NavigationMenuContent>
                 </NavigationMenuItem>
+
                 <NavigationMenuItem>
                   <Link to="/sustainability" className={`${navTextClass} font-bold`}>SUSTAINABILITY</Link>
                 </NavigationMenuItem>
@@ -201,9 +221,7 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
             </NavigationMenu>
           </div>
 
-          {/* --- INQUIRY BUTTON REMOVED --- */}
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -211,7 +229,6 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
           </div>
         </div>
 
-        {/* Mobile Navigation (functionality unchanged) */}
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t pt-4">
             {/* Mobile menu content */}

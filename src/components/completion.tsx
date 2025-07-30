@@ -54,10 +54,26 @@ const CompletionStats = () => {
     }, [controls, inView]);
 
     return (
-        <section className="py-16 md:py-20 bg-[#212121] w-full relative overflow-hidden">
-            <div className="w-full max-w-[2400px] mx-auto px-4 md:px-8 lg:px-16 relative z-20">
-                <div className="relative rounded-2xl border border-white/10 shadow-2xl overflow-hidden bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] p-6 md:p-10 lg:p-16">
-                    {/* Background image layer (now respects padding) */}
+        // The `bg-[#212121]` has been removed to allow the video background to show.
+        <section className="py-3 md:py-8 w-full relative overflow-hidden">
+            {/* --- Video Background and Overlay --- */}
+            <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                    src="/hero.mp4"
+                />
+                <div className="absolute inset-0 bg-blue-900/90 z-10" />
+            </div>
+
+            {/* Content container, sits on top of the video background */}
+            <div className="w-full max-w-[1400vh] px-4 md:px-6 lg:px-6 relative z-20">
+                <div className="relative rounded-xl border border-white/10 shadow-2xl overflow-hidden bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] p-[-10vh] md:p-12 lg:p-20">
+                    
+                    {/* Background image layer (PRESERVED AS REQUESTED) */}
                     <div
                         className="absolute inset-0 z-0"
                         style={{
@@ -66,8 +82,10 @@ const CompletionStats = () => {
                             backgroundPosition: 'center',
                         }}
                     />
-                    {/* Subtle shade overlay - reduced opacity from 70% to 45% */}
+                    
+                    {/* Subtle shade overlay for the photo */}
                     <div className="absolute inset-0 z-10 bg-black/45 pointer-events-none" />
+                    
                     <motion.div
                         ref={ref}
                         initial="hidden"
@@ -112,7 +130,3 @@ const CompletionStats = () => {
 };
 
 export default CompletionStats;
-
-
-// Then in your page component:
-<CompletionStats />

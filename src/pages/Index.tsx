@@ -2,18 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import About from '../components/About';
-import Projects from '../components/Projects';
+import Projects from '../components/Projects'; // Import the Projects component
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CompletionStats from '../components/completion'; // Fix capitalization
-import ServiceOfferings from '../components/ServiceOfferings';
 import GlobalPresence from '../components/GlobalPresence';
 import Testimonials from '../components/Testimonials'; // Import Testimonials component
 import TrustedByLogos from '../components/TrustedByLogos'; // <-- Add this import at the top
-
-// Remove WhatsAppButton import
-// import WhatsAppButton from '../components/WhatsAppButton';
 
 // Replace the existing scrollToSection function with this improved version
 const scrollToSection = (elementRef) => {
@@ -108,9 +104,10 @@ const Index = () => {
   }, []);
   
   return (
+    // --- ANIMATION REMOVED & BACKGROUND CHANGED ---
+    // The animated gradient has been replaced with a static dark blue background.
     <div
-      className="min-h-screen w-full bg-[#141414] space-y-0"
-      style={{ backgroundColor: "#212121" }} // <-- Set your desired background color here
+      className="min-h-screen w-full bg-blue-950 space-y-0"
     >
       {/* Remove vertical gap between sections by removing extra margins/paddings */}
       <div ref={heroRef} className="mb-0">
@@ -142,6 +139,7 @@ const Index = () => {
       <div ref={servicesRef} className="mb-0">
         <Services />
       </div>
+      {/* --- PROJECTS COMPONENT ADDED --- */}
       <div ref={projectsRef} className="mb-0">
         <Projects />
       </div>
@@ -152,7 +150,6 @@ const Index = () => {
       </div>
       <div ref={contactRef} className="mb-0">
         <TrustedByLogos />
-        <ServiceOfferings />
         <Contact />
       </div>
       <Footer />

@@ -125,14 +125,6 @@ const Index = () => {
         <Header
           mode="transparent"
           className="bg-black/80 backdrop-blur-sm border-b border-white/10 w-full"
-          onNavigate={{
-            home: () => scrollToSection(heroRef),
-            about: () => scrollToSection(aboutRef),
-            services: () => scrollToSection(servicesRef),
-            projects: () => scrollToSection(projectsRef),
-            testimonials: () => scrollToSection(testimonialsRef),
-            contact: () => scrollToSection(contactRef),
-          }}
         />
       </div>
       <div ref={aboutRef} className="mb-0">

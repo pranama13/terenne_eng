@@ -35,8 +35,10 @@ import MidlevelPackage from "./pages/midlevelPackage";
 import HighendPackages from "./pages/highendPackages";
 import InternationalPackage from "./pages/internationalPackage";
 import CorporatePackages from "./pages/corporatePackages";
-import ProjectsPage from "./pages/ProjectsPage"; 
+import ProjectsPage from "./pages/CompletedProjects"; 
 import StickyButtons from "./components/StickyButtons"; 
+import OngoingProjects from "./pages/OngoingProjects";
+import CompletedProjects from "./pages/CompletedProjects";
 
 
 const queryClient = new QueryClient();
@@ -70,6 +72,7 @@ const App = () => (
           <Route path="/whyterrene" element={<Whyterrene />} />
           <Route path="/qualitypolicy" element={<Qualitypolicy />} />
           <Route path="/sustainability" element={<Sustainability />} />
+          <Route path="/ongoing-projects" element={<OngoingProjects />} />
           
           <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/sitemap" element={<Sitemap />} />
@@ -80,7 +83,7 @@ const App = () => (
           <Route path="/packages/international" element={<InternationalPackage />} />
           <Route path="/packages/corporate" element={<CorporatePackages />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/completed-projects" element={<CompletedProjects />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 

@@ -113,19 +113,19 @@ const Footer = () => {
                 </div>
                 {/* --- SOCIAL MEDIA ICONS UPDATED --- */}
                 <div className="flex space-x-4 pt-2 justify-start pl-0 ml-0">
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors">
+                  <a href="https://www.facebook.com/share/1GRAMJHEas/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors">
                     <Facebook className="w-6 h-6" />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
+                  <a href="https://www.linkedin.com/company/terrene-engineering-private-limited/ " target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors">
                     <Linkedin className="w-6 h-6" />
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
+                  <a href="https://www.instagram.com/terreneengineering?igsh=amE5a2QwdjlmdDU1" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors">
                     <Instagram className="w-6 h-6" />
                   </a>
-                   <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-600 transition-colors">
+                   <a href="https://youtube.com/@terreneengineering?si=3ifwOLd3PaIDIoly" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-600 transition-colors">
                     <Youtube className="w-6 h-6" />
                   </a>
-                   <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                   <a href="https://www.tiktok.com/@terreneengineering?_t=ZS-8yEqPlsthkl&_r=1" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                     <TikTokIcon />
                   </a>
                 </div>

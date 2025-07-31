@@ -33,7 +33,7 @@ const LogoTriangle = () => {
     >
       {/* Technical grid background */}
       <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-        <svg width="120" height="120" className="absolute inset-0">
+        <svg width="140" height="140" className="absolute inset-0">
           <defs>
             <pattern id="techGrid" width="10" height="10" patternUnits="userSpaceOnUse">
               <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#0EA5E9" strokeWidth="0.5" opacity="0.3"/>
@@ -76,10 +76,23 @@ const LogoTriangle = () => {
         </svg>
       </div>
 
-      {/* Main engineering frame */}
-      <div className="relative p-6 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 backdrop-blur-md shadow-2xl border-2 border-blue-500/30 group-hover:border-blue-400/60 transition-all duration-500 group-hover:scale-105"
+      {/* Hexagonal border outline */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <svg width="140" height="140" className="absolute">
+          <polygon 
+            points="35,10 105,10 130,70 105,130 35,130 10,70" 
+            fill="none" 
+            stroke="rgba(255, 255, 255, 1)" 
+            strokeWidth="2" 
+            className="group-hover:stroke-blue-400 transition-colors duration-500"
+          />
+        </svg>
+      </div>
+
+      {/* Main hexagonal engineering frame */}
+      <div className="relative p-6 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 backdrop-blur-md shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500 group-hover:scale-105"
            style={{ 
-             clipPath: 'polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px)',
+             clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
              width: '140px',
              height: '140px'
            }}>
@@ -87,32 +100,41 @@ const LogoTriangle = () => {
         {/* Technical overlay with blueprint feel */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         
-        {/* Engineering measurement lines */}
+        {/* Hexagonal measurement lines */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-500">
-          {/* Horizontal measurement lines */}
-          <div className="absolute top-2 left-2 right-2 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
-          <div className="absolute bottom-2 left-2 right-2 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent" />
-          {/* Vertical measurement lines */}
-          <div className="absolute top-2 bottom-2 left-2 w-px bg-gradient-to-b from-transparent via-blue-400 to-transparent" />
-          <div className="absolute top-2 bottom-2 right-2 w-px bg-gradient-to-b from-transparent via-blue-400 to-transparent" />
+          {/* Hexagon outline measurements */}
+          <svg width="100%" height="100%" className="absolute inset-0">
+            <polygon 
+              points="35,17 105,17 126,70 105,123 35,123 14,70" 
+              fill="none" 
+              stroke="#ffffffff" 
+              strokeWidth="1" 
+              strokeDasharray="2,2"
+              opacity="0.6"
+            />
+          </svg>
           
           {/* Corner measurement markers */}
-          <div className="absolute top-1 left-1 w-3 h-3 border-l-2 border-t-2 border-blue-400" />
-          <div className="absolute top-1 right-1 w-3 h-3 border-r-2 border-t-2 border-blue-400" />
-          <div className="absolute bottom-1 left-1 w-3 h-3 border-l-2 border-b-2 border-blue-400" />
-          <div className="absolute bottom-1 right-1 w-3 h-3 border-r-2 border-b-2 border-blue-400" />
+          <div className="absolute top-4 left-8 w-2 h-2 border-l border-t border-blue-400" />
+          <div className="absolute top-4 right-8 w-2 h-2 border-r border-t border-blue-400" />
+          <div className="absolute top-16 right-3 w-2 h-2 border-r border-blue-400" />
+          <div className="absolute bottom-16 right-3 w-2 h-2 border-r border-blue-400" />
+          <div className="absolute bottom-4 right-8 w-2 h-2 border-r border-b border-blue-400" />
+          <div className="absolute bottom-4 left-8 w-2 h-2 border-l border-b border-blue-400" />
+          <div className="absolute bottom-16 left-3 w-2 h-2 border-l border-blue-400" />
+          <div className="absolute top-16 left-3 w-2 h-2 border-l border-blue-400" />
         </div>
 
         {/* Data points - engineering style */}
-        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute top-8 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="flex flex-col text-right text-xs text-blue-400 font-mono">
-            <span className="animate-pulse"></span>
+            <span className="animate-pulse">H:140</span>
             <span className="animate-pulse" style={{ animationDelay: '0.5s' }}></span>
             <span className="animate-pulse" style={{ animationDelay: '1s' }}></span>
           </div>
         </div>
 
-        {/* Logo - Made Larger */}
+        {/* Logo - Made Larger and centered for hexagon */}
         <div className="relative z-10 flex items-center justify-center h-full">
           <img
             src={Logo2}
@@ -121,7 +143,7 @@ const LogoTriangle = () => {
               isHovered ? 'brightness-110 contrast-110' : 'brightness-100'
             }`}
             style={{ 
-              height: '80px', // Increased from 56px to 80px
+              height: '80px',
               filter: isHovered 
                 ? 'drop-shadow(0 0 15px rgba(14, 165, 233, 0.4)) drop-shadow(0 4px 12px rgba(0,0,0,0.3))'
                 : 'drop-shadow(0 2px 8px rgba(0,0,0,0.2))',
@@ -131,7 +153,7 @@ const LogoTriangle = () => {
         </div>
 
         {/* Status indicators */}
-        <div className="absolute bottom-3 left-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute bottom-8 left-6 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
           <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }} />
           <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.6s' }} />
@@ -146,7 +168,7 @@ const LogoTriangle = () => {
       {/* Technical readout */}
       <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <div className="text-xs text-blue-400 font-mono text-center">
-          <div className="animate-pulse">Terrene</div>
+          <div className="animate-pulse"></div>
         </div>
       </div>
 

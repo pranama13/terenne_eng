@@ -16,25 +16,36 @@ const ServiceOfferings = () => {
     {
       icon: <DollarSign className="w-10 h-10" />,
       title: "Cost-Effective",
-      description: "Our team discusses projects that best fit your budget, ensuring cost-effectiveness and value for money."
+      description: "We work closely with you to align engineering solutions with your budget and delivering exceptional value without compromising on quality."
     },
     {
       icon: <CheckCircle className="w-10 h-10" />,
-      title: "Quality Assurance",
-      description: "At every production stage, our engineers verify requirements and drawings to ensure work quality and reliability."
+      title: "Uncompromised Quality Assurance",
+      description: "From concept to completion, every stage is reviewed by our expert engineers to ensure precision, compliance, and lasting reliability."
     },
     {
       icon: <Clock className="w-10 h-10" />,
       title: "Prompt Delivery",
-      description: "We believe in completing work within decided timeframes and promptly delivering projects to our clients."
+      description: "We’re committed to meeting deadlines and delivering every project on schedule with efficiency, consistency, and professionalism."
     }
   ];
 
   return (
-    <section id="ServiceOfferings" className="py-2 md:py-4 bg-[#212121] w-full">
-      {/* --- WIDTH REDUCED --- */}
-      {/* A max-width has been re-applied and horizontal padding increased to make the container narrower. */}
-      <div className="w-full max-w-9xl mx-auto px-4 md:px-8">
+    <section id="ServiceOfferings" className="py-2 md:py-4 w-full relative overflow-hidden">
+      {/* --- Video Background and Blue Tint Overlay --- */}
+      <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          src="/hero.mp4"
+        />
+        <div className="absolute inset-0 bg-blue-900/90 z-10"></div>
+      </div>
+
+      <div className="w-full max-w-9xl mx-auto px-4 md:px-8 relative z-10">
         <div className="relative mb-8">
           {/* Outer premium white glow */}
           <div className="absolute -inset-3 bg-gradient-to-r from-white/5 via-white/10 to-white/5 rounded-2xl blur-xl z-0"></div>
@@ -51,8 +62,8 @@ const ServiceOfferings = () => {
                 backgroundImage: `url(${offeringsBgImage})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                filter: 'brightness(0.65)', // Kept darkness for readability
-                transform: 'scaleX(-1)' // This flips the image horizontally
+                filter: 'brightness(0.65)',
+                transform: 'scaleX(-1)'
               }}
             ></div>
             

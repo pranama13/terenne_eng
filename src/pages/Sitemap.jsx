@@ -161,12 +161,12 @@ const Sitemap = () => {
             className="w-full h-full object-cover"
           />
           {/* Darker overlay for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#094a65]/95 via-[#094a65]/90 to-[#094a65]/95"></div>
-          <div className="absolute inset-0 bg-black/40"></div> {/* Increased from 30% to 40% for better visibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-700"></div> {/* Increased from 30% to 40% for better visibility */}
         </div>
         
         {/* Content (in front of the image) */}
-        <div className="container mx-auto relative z-10 pt-8"> {/* Added pt-8 to move text down */}
+        <div className="container mx-auto relative z-10 pt-8 "> {/* Added pt-8 to move text down */}
           <h1 className="text-4xl font-bold text-white text-center drop-shadow-lg shadow-black">Sitemap</h1>
           <div className="flex justify-center mt-4">
             <nav className="flex items-center text-white drop-shadow-md">
@@ -180,7 +180,7 @@ const Sitemap = () => {
 
       {/* Sitemap Content */}
       <div className="container mx-auto py-12 px-4">
-        <div className="bg-[#0E75A0] rounded-lg shadow-md p-8 border border-white/10">
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg shadow-md p-8 border border-white/10">
           <h2 className="text-2xl font-semibold text-white mb-8 pb-4 border-b border-white/20">
             Website Navigation Structure
           </h2>

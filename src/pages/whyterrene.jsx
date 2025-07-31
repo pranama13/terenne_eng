@@ -3,18 +3,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Award, Users, Globe, ChevronDown } from 'lucide-react';
-// Remove engineeringTeam and aboutImage imports
-// import engineeringTeam from '../assert/ProjectManagment.jpg';
-// import aboutImage from '../assert/about.jpg';
 import about2bg from '../assert/about2bg.jpg';
 import whyus from '../assert/whyterren/whyus.jpg';
 import whyterren from '../assert/whyterren/whyterren.jpg';
 import whyterren2 from '../assert/whyterren/whyterren2.jpg';
 
-// ...existing code...
-
 const Whyterrene = () => {
-  // ...existing state...
   const [openSections, setOpenSections] = useState({
     expertise: false,
     approach: false,
@@ -24,7 +18,6 @@ const Whyterrene = () => {
   const lastScrollY = useRef(0);
   const [currentImage, setCurrentImage] = useState(0);
 
-  // Use the three new images for the carousel
   const images = [whyus, whyterren, whyterren2];
 
   // Scroll to top on mount
@@ -51,21 +44,18 @@ const Whyterrene = () => {
   // Update the useEffect that controls image transitions
   useEffect(() => {
     const interval = setInterval(() => {
-      // Trigger the animation before changing the currentImage state
       const nextImageEl = document.getElementById('nextImage');
       const currentImageEl = document.getElementById('currentImage');
       
       if (nextImageEl && currentImageEl) {
-        // Start animation
         currentImageEl.style.opacity = '0';
         currentImageEl.style.transform = 'scale(0.95) translateZ(0)';
         nextImageEl.style.opacity = '1';
         nextImageEl.style.transform = 'scale(1.0) translateZ(0)';
         
-        // Change the currentImage state after animation starts
         setTimeout(() => {
           setCurrentImage((prev) => (prev + 1) % images.length);
-        }, 1500); // Wait until animation is almost complete
+        }, 1500); 
       } else {
         setCurrentImage((prev) => (prev + 1) % images.length);
       }
@@ -100,9 +90,8 @@ const Whyterrene = () => {
             {/* Blue light accents */}
             <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-blue-500/10 blur-3xl"></div>
             <div className="absolute bottom-0 left-1/4 w-120 h-120 rounded-full bg-blue-600/10 blur-3xl"></div>
-            {/* Animated image transition - improved with scale and movement effects */}
+            {/* Animated image transition */}
             <div className="relative w-full h-full overflow-hidden">
-              {/* Current image - fade out and scale down when transitioning */}
               <img
                 id="currentImage"
                 src={images[currentImage]}
@@ -117,8 +106,6 @@ const Whyterrene = () => {
                 }}
                 key={currentImage}
               />
-              
-              {/* Next image - starts zoomed in and slides up while fading in */}
               <img
                 id="nextImage"
                 src={images[(currentImage + 1) % images.length]}
@@ -144,27 +131,10 @@ const Whyterrene = () => {
               {/* Empty column for spacing on small screens */}
               <div className="hidden lg:block"></div>
               
-              {/* Right: Content - adjust padding to accommodate image */}
-              <div className="flex flex-col justify-start p-0 pt-0 pb-8 lg:pb-11 xl:pb-16 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] rounded-3xl border-2 border-white/10 relative overflow-hidden shadow-2xl ml-80 lg:ml-0 lg:-mr-16 mt-0 lg:mt-0">
-                {/* Shading and background effects (copied from About.tsx) */}
-                <div className="absolute -inset-1 bg-gradient-to-tr from-black/40 via-white/5 to-black/30 rounded-[inherit] blur-md opacity-70 z-0"></div>
-                <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-white/10 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/20 to-transparent"></div>
-                <div className="absolute -right-8 top-1/3 w-40 h-40 rounded-full bg-white/10 blur-2xl"></div>
-                <div className="absolute -left-8 bottom-1/3 w-40 h-40 rounded-full bg-black/20 blur-2xl"></div>
-                <div className="absolute inset-0 opacity-10 pointer-events-none">
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl"></div>
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/20 rounded-full blur-2xl"></div>
-                  <div className="absolute bottom-1/3 right-1/4 w-32 h-32 bg-white/20 rounded-full blur-xl"></div>
-                </div>
-                <div className="hidden lg:block absolute -inset-12 z-0">
-                  <div className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-blue-500/5 blur-[100px]"></div>
-                  <div className="absolute bottom-1/4 -left-24 w-96 h-96 rounded-full bg-cyan-400/5 blur-[120px]"></div>
-                  <div className="absolute top-0 right-1/3 bottom-0 left-0 bg-gradient-to-br from-white/3 via-transparent to-transparent rotate-12 opacity-30 blur-3xl"></div>
-                  <div className="absolute top-0 left-1/2 h-full w-40 bg-gradient-to-b from-white/5 via-white/2 to-transparent blur-2xl"></div>
-                </div>
-
-                {/* Top image banner (copied from About.tsx) */}
+              {/* Right: Content - UPDATED BACKGROUND GRADIENT */}
+              <div className="flex flex-col justify-start p-0 pt-0 pb-8 lg:pb-11 xl:pb-16 bg-gradient-to-r from-cyan-500 to-blue-700 rounded-3xl border-2 border-white/10 relative overflow-hidden shadow-2xl ml-80 lg:ml-0 lg:-mr-16 mt-0 lg:mt-0">
+                
+                {/* Top image banner */}
                 <div className="w-full overflow-hidden rounded-t-3xl">
                   <div className="relative">
                     <img 
@@ -172,7 +142,7 @@ const Whyterrene = () => {
                       alt="Why Terrene Engineering" 
                       className="w-full h-[320px] md:h-[400px] lg:h-[480px] object-cover object-center"
                     />
-                    <div className="absolute inset-0 bg-[#0E75A0]/40"></div>
+                    <div className="absolute inset-0 bg-blue-800/40"></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                     <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-black/40 via-black/10 to-transparent z-10"></div>
                     <div className="absolute bottom-0 left-0 w-full p-4 md:p-6">
@@ -184,7 +154,7 @@ const Whyterrene = () => {
                   </div>
                 </div>
 
-                {/* Content container - with proper padding now that image is at the top */}
+                {/* Content container */}
                 <div className="relative z-10 flex flex-col items-start h-full px-8 lg:px-11 xl:px-16 pt-8">
                   {/* Main topic and dropdowns */}
                   <div className="mb-8">
@@ -206,9 +176,9 @@ const Whyterrene = () => {
                       {/* Expertise Section */}
                       <li>
                         <div
-                          className={`flex items-center justify-between px-4 py-3 border border-white bg-white/5 cursor-pointer transition-all duration-300 ${
+                          className={`flex items-center justify-between px-4 py-3 border border-white/20 bg-white/5 cursor-pointer transition-all duration-300 ${
                             openSections['expertise']
-                              ? 'bg-primary/10 border-white rounded-t-lg'
+                              ? 'bg-white/10 border-white/20 rounded-t-lg'
                               : 'hover:bg-white/10 rounded-lg'
                           }`}
                           onClick={() => handleToggle('expertise')}
@@ -221,13 +191,13 @@ const Whyterrene = () => {
                           />
                         </div>
                         <div
-                          className={`transition-all duration-300 overflow-hidden border-x border-b border-white ${
+                          className={`transition-all duration-300 overflow-hidden border-x border-b border-white/20 ${
                             openSections['expertise']
                               ? 'max-h-96 opacity-100 rounded-b-lg'
                               : 'max-h-0 opacity-0'
                           }`}
                         >
-                          <div className="p-6 bg-white/10 text-white">
+                          <div className="p-6 bg-black/20 text-white">
                             <p className="mb-4 text-lg">
                               Our team consists of highly qualified engineers with decades of combined experience in structural design, civil engineering, and architectural consulting.
                             </p>
@@ -241,9 +211,9 @@ const Whyterrene = () => {
                       {/* Approach Section */}
                       <li>
                         <div
-                          className={`flex items-center justify-between px-4 py-3 border border-white bg-white/5 cursor-pointer transition-all duration-300 ${
+                          className={`flex items-center justify-between px-4 py-3 border border-white/20 bg-white/5 cursor-pointer transition-all duration-300 ${
                             openSections['approach']
-                              ? 'bg-primary/10 border-white rounded-t-lg'
+                              ? 'bg-white/10 border-white/20 rounded-t-lg'
                               : 'hover:bg-white/10 rounded-lg'
                           }`}
                           onClick={() => handleToggle('approach')}
@@ -256,13 +226,13 @@ const Whyterrene = () => {
                           />
                         </div>
                         <div
-                          className={`transition-all duration-300 overflow-hidden border-x border-b border-white ${
+                          className={`transition-all duration-300 overflow-hidden border-x border-b border-white/20 ${
                             openSections['approach']
                               ? 'max-h-96 opacity-100 rounded-b-lg'
                               : 'max-h-0 opacity-0'
                           }`}
                         >
-                          <div className="p-6 bg-white/10 text-white">
+                          <div className="p-6 bg-black/20 text-white">
                             <p className="mb-4 text-lg">
                               We place clients at the center of our process, ensuring thorough understanding of requirements before crafting tailored solutions that address specific needs.
                             </p>
@@ -276,9 +246,9 @@ const Whyterrene = () => {
                       {/* Benefits Section */}
                       <li>
                         <div
-                          className={`flex items-center justify-between px-4 py-3 border border-white bg-white/5 cursor-pointer transition-all duration-300 ${
+                          className={`flex items-center justify-between px-4 py-3 border border-white/20 bg-white/5 cursor-pointer transition-all duration-300 ${
                             openSections['benefits']
-                              ? 'bg-primary/10 border-white rounded-t-lg'
+                              ? 'bg-white/10 border-white/20 rounded-t-lg'
                               : 'hover:bg-white/10 rounded-lg'
                           }`}
                           onClick={() => handleToggle('benefits')}
@@ -291,13 +261,13 @@ const Whyterrene = () => {
                           />
                         </div>
                         <div
-                          className={`transition-all duration-300 overflow-hidden border-x border-b border-white ${
+                          className={`transition-all duration-300 overflow-hidden border-x border-b border-white/20 ${
                             openSections['benefits']
                               ? 'max-h-96 opacity-100 rounded-b-lg'
                               : 'max-h-0 opacity-0'
                           }`}
                         >
-                          <div className="p-6 bg-white/10 text-white">
+                          <div className="p-6 bg-black/20 text-white">
                             <p className="mb-4 text-lg">
                               Sustainability is integrated into everything we do, from initial concept development through detailed design and implementation.
                             </p>

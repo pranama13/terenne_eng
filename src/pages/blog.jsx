@@ -101,7 +101,7 @@ const Blog = () => {
           {blogData.map((section, idx) => (
             <div
               key={idx}
-              className="bg-[#0E75A0] rounded-lg shadow-xl overflow-hidden flex flex-col"
+              className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg shadow-xl overflow-hidden flex flex-col"
             >
               {/* Content */}
               <div className="p-6">

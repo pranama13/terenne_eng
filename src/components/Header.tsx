@@ -56,7 +56,20 @@ const serviceCategories = [
   }
 ];
 
-// Data for Software Training Dropdown
+// Data for Dropdowns
+const companyLinks = [
+    { label: "About Us", to: "/about" },
+    { label: "Why Terrene", to: "/Whyterrene" },
+    { label: "Sustainability", to: "/sustainability" },
+    { label: "Testimonial", to: "/testimonial" },
+    { label: "Sitemap", to: "/sitemap" },
+    { label: "Quality Policy", to: "/qualitypolicy" },
+    { label: "FAQ", to: "/faq" },
+    { label: "Career", to: "/career" },
+    { label: "Blog", to: "/blog" },
+    { label: "Contact Us", to: "/inquiry" },
+];
+
 const softwareTrainingLinks = [
     { label: "BIM", to: "/software-training/bim" },
     { label: "Digital Twin", to: "/software-training/digital-twin" },
@@ -65,89 +78,98 @@ const softwareTrainingLinks = [
     { label: "Construction Project Management", to: "/software-training/cpm" },
 ];
 
+const packageLinks = [
+    { label: "Starter", to: "/packages/starterPackage" },
+    { label: "Mid Level", to: "/packages/mid-level" },
+    { label: "High End", to: "/packages/high-end" },
+    { label: "International", to: "/packages/international" },
+    { label: "Corporate", to: "/packages/corporate" },
+];
+
+const projectLinks = [
+    { label: "Ongoing Projects", to: "/ongoing-projects" },
+    { label: "Completed Projects", to: "/completed-projects" },
+];
+
+
 const services = serviceCategories.flatMap(category => category.services);
 
 interface HeaderProps {
   mode?: 'transparent' | 'solid';
   className?: string;
-  onNavigate?: {
-    home?: () => void;
-    about?: () => void;
-    services?: () => void;
-    projects?: () => void;
-    testimonials?: () => void;
-    contact?: () => void;
-  };
 }
 
-const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProps) => {
+const Header = ({ mode = 'transparent', className = '' }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<number>(0);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
   const headerClasses = mode === 'transparent'
     ? "bg-transparent backdrop-blur-sm sticky top-0 z-50 transition-all duration-300"
     : "bg-background shadow-sm border-b border-border sticky top-0 z-50 transition-all duration-300";
 
   const navTextClass = `${mode === 'transparent' ? 'text-white' : 'text-foreground'} hover:text-primary-100 bg-transparent hover:bg-transparent transition-colors px-3 py-2 text-md font-medium`;
+  const mobileNavTextClass = `${mode === 'transparent' ? 'text-white' : 'text-foreground'}`;
+  
+  const toggleAccordion = (accordionName: string) => {
+    setOpenAccordion(openAccordion === accordionName ? null : accordionName);
+  };
+
+  const MobileNavLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
+    <Link to={to} className={`block px-3 py-2 rounded-md text-base font-medium ${mobileNavTextClass}`} onClick={() => setIsMenuOpen(false)}>{children}</Link>
+  );
+
+  const MobileAccordion = ({ title, links }: { title: string; links: { label: string; to: string }[] }) => (
+    <div className="border-b border-white/10 py-1">
+      <button onClick={() => toggleAccordion(title)} className={`w-full flex justify-between items-center px-3 py-2 rounded-md text-base font-medium ${mobileNavTextClass}`}>
+        <span>{title}</span>
+        <ChevronDown className={`transform transition-transform ${openAccordion === title ? 'rotate-180' : ''} w-5 h-5`} />
+      </button>
+      {openAccordion === title && (
+        <div className="pl-4 mt-1 space-y-1 pb-2">
+          {links.map(link => (
+            <Link key={link.to} to={link.to} className={`block px-3 py-2 rounded-md text-sm ${mobileNavTextClass} hover:bg-white/10`} onClick={() => setIsMenuOpen(false)}>{link.label}</Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     
     <header className={`${headerClasses} ${className} w-full`}>
-      
       <div className="w-full max-w-[2400px] mx-auto px-2 py-1">
         <div className="flex items-center justify-between">
-            {/* --- LOGO WRAPPED IN LINK --- */}
-            {/* The LogoTriangle is now a clickable link to the homepage */}
-            <Link to="/" aria-label="Go to Home">
+            <Link to="/" aria-label="Go to Home" onClick={() => setIsMenuOpen(false)}>
                 <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
                     <LogoTriangle />
                 </div>
             </Link>
 
           <div className="flex-1 flex justify-center">
+            {/* Desktop Menu */}
             <NavigationMenu className="hidden md:flex items-center">
               <NavigationMenuList>
-                <NavigationMenuItem>
-                  <Link to="/" className={`${navTextClass} font-bold`}>HOME</Link>
-                </NavigationMenuItem>
+                <NavigationMenuItem><Link to="/" className={`${navTextClass} font-bold`}>HOME</Link></NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>COMPANY</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                     <div className="w-48 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
-                      <NavigationMenuLink asChild><Link to="/about" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">About Us</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/Whyterrene" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Why Terrene</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/sustainability" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Sustainability</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/testimonial" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Testimonial</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/sitemap" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Sitemap</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/qualitypolicy" className="block px-3 py-2 text-sm   text-white hover:bg-white/10 rounded">Quality Policy</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/faq" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">FAQ</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/career" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Career</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/blog" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Blog</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/inquiry" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Contact Us</Link></NavigationMenuLink>
+                      {companyLinks.map(link => <NavigationMenuLink asChild key={link.to}><Link to={link.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">{link.label}</Link></NavigationMenuLink>)}
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger 
-                    className={navTextClass}
-                    onMouseEnter={() => setHoveredCategory(0)}
-                  >
-                    SERVICES
-                  </NavigationMenuTrigger>
+                  <NavigationMenuTrigger className={navTextClass} onMouseEnter={() => setHoveredCategory(0)}>SERVICES</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                     <div className="w-[800px] p-6 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 flex gap-6">
                       <ul className="w-1/4 space-y-2 border-r border-white/10 pr-4">
                         {serviceCategories.map((category, idx) => (
-                           <li 
-                             className="group" 
-                             key={idx}
-                             onMouseEnter={() => setHoveredCategory(idx)}
-                           >
-                             <Link to="#" className="flex justify-between items-center p-2 text-sm text-white hover:bg-white/10 rounded transition-colors">
+                           <li className="group" key={idx} onMouseEnter={() => setHoveredCategory(idx)}>
+                             <div className="flex justify-between items-center p-2 text-sm text-white hover:bg-white/10 rounded transition-colors cursor-pointer">
                                {category.category}
                                <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                             </Link>
+                             </div>
                            </li>
                         ))}
                       </ul>
@@ -156,11 +178,9 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                          <div>
                           <h5 className="text-primary font-semibold mb-3 text-sm uppercase tracking-wider border-b border-white/10 pb-2">{serviceCategories[hoveredCategory].category}</h5>
                           <ul className="space-y-2 grid grid-cols-2 gap-x-4">
-                            {serviceCategories[hoveredCategory].services.map((service, serviceIdx) => (
-                                <li key={serviceIdx}>
-                                    <NavigationMenuLink asChild>
-                                        <Link to={service.to} className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">{service.label}</Link>
-                                    </NavigationMenuLink>
+                            {serviceCategories[hoveredCategory].services.map((service) => (
+                                <li key={service.to}>
+                                    <NavigationMenuLink asChild><Link to={service.to} className="block px-2 py-1.5 text-sm text-white hover:bg-white/10 rounded transition-colors">{service.label}</Link></NavigationMenuLink>
                                 </li>
                             ))}
                           </ul>
@@ -170,71 +190,55 @@ const Header = ({ mode = 'transparent', className = '', onNavigate }: HeaderProp
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>SOFTWARE TRAINING</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                     <div className="w-64 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
-                      {softwareTrainingLinks.map((link, idx) => (
-                        <NavigationMenuLink asChild key={idx}>
-                          <Link to={link.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">{link.label}</Link>
-                        </NavigationMenuLink>
-                      ))}
-                      <div className="border-t border-white/10 mt-2 pt-2">
-                         <NavigationMenuLink asChild>
-                            <Link to="/software-training" className="block px-3 py-2 text-sm text-primary font-semibold hover:bg-white/10 rounded">
-                                View More
-                            </Link>
-                         </NavigationMenuLink>
-                      </div>
+                      {softwareTrainingLinks.map((link) => (<NavigationMenuLink asChild key={link.to}><Link to={link.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">{link.label}</Link></NavigationMenuLink>))}
+                      <div className="border-t border-white/10 mt-2 pt-2"><NavigationMenuLink asChild><Link to="/software-training" className="block px-3 py-2 text-sm text-primary font-semibold hover:bg-white/10 rounded">View More</Link></NavigationMenuLink></div>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>PACKAGES</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                     <div className="w-48 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
-                      <NavigationMenuLink asChild><Link to="/packages/starterPackage" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Starter</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/packages/mid-level" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Mid Level</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/packages/high-end" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">High End</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/packages/international" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">International</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/packages/corporate" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Corporate</Link></NavigationMenuLink>
+                      {packageLinks.map(link => <NavigationMenuLink asChild key={link.to}><Link to={link.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">{link.label}</Link></NavigationMenuLink>)}
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-                
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={navTextClass}>PROJECTS</NavigationMenuTrigger>
                   <NavigationMenuContent className="!bg-transparent !border-none !shadow-none">
                     <div className="w-48 p-2 bg-black/95 backdrop-blur-md rounded-lg border border-white/10">
-                      <NavigationMenuLink asChild><Link to="/ongoing-projects" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Ongoing Projects</Link></NavigationMenuLink>
-                      <NavigationMenuLink asChild><Link to="/completed-projects" className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">Completed Projects</Link></NavigationMenuLink>
+                      {projectLinks.map(link => <NavigationMenuLink asChild key={link.to}><Link to={link.to} className="block px-3 py-2 text-sm text-white hover:bg-white/10 rounded">{link.label}</Link></NavigationMenuLink>)}
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <Link to="/sustainability" className={`${navTextClass} font-bold`}>SUSTAINABILITY</Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link to="/inquiry" className={`${navTextClass} font-bold`}>CONTACT US</Link>
-                </NavigationMenuItem>
+                <NavigationMenuItem><Link to="/sustainability" className={`${navTextClass} font-bold`}>SUSTAINABILITY</Link></NavigationMenuItem>
+                <NavigationMenuItem><Link to="/inquiry" className={`${navTextClass} font-bold`}>CONTACT US</Link></NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
 
-
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={mobileNavTextClass}>
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
-
+        
+        {/* Mobile Menu Content */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t pt-4">
-            {/* Mobile menu content */}
+          <nav className="md:hidden mt-4 pb-4 border-t border-white/20 pt-2">
+            <div className="border-b border-white/10 py-1"><MobileNavLink to="/">HOME</MobileNavLink></div>
+            <MobileAccordion title="COMPANY" links={companyLinks} />
+            <MobileAccordion title="SERVICES" links={serviceCategories.flatMap(cat => cat.services)} />
+            <MobileAccordion title="SOFTWARE TRAINING" links={softwareTrainingLinks} />
+            <MobileAccordion title="PACKAGES" links={packageLinks} />
+            <MobileAccordion title="PROJECTS" links={projectLinks} />
+            <div className="border-b border-white/10 py-1"><MobileNavLink to="/sustainability">SUSTAINABILITY</MobileNavLink></div>
+            <div className="py-1"><MobileNavLink to="/inquiry">CONTACT US</MobileNavLink></div>
           </nav>
         )}
       </div>

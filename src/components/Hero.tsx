@@ -35,19 +35,16 @@ const Hero = () => {
         <Header mode="transparent" />
       </div>
 
-      {/* Large Triangle Overlay with Hexagonal Pattern - MODIFIED */}
-      <div className="absolute inset-0 w-full h-full z-20 flex items-left justify-start mt-[-40vh]">
+      {/* Large Triangle Overlay with Hexagonal Pattern */}
+      <div className="absolute inset-0 w-full h-full z-20 flex items-left justify-start mt-[-65vh]">
         <div style={{
-          width: '140vw',
-          height: '140vh',
-          minWidth: '1000px',
-          minHeight: '1000px',
+          width: '200vw',
+          height: '150vh',
         }}>
-          {/* MODIFIED: Changed viewBox aspect ratio to make the triangle taller */}
           <svg
-            width="140%"
-            height="140%"
-            viewBox="0 0 80 50"
+            width="165%"
+            height="165%"
+            viewBox="0 0 50 50"
             preserveAspectRatio="xMinYMid meet"
             className="absolute"
           >
@@ -55,9 +52,9 @@ const Hero = () => {
               <pattern id="hexBeehive" width="3" height="3" patternUnits="userSpaceOnUse">
                 <polygon
                   points="0.75,0.2 2.25,0.2 3,1.3 2.25,2.4 0.75,2.4 0,1.3"
-                  fill="rgba(59, 130, 246, 0.08)"
+                  fill="hsla(216, 46%, 96%, 0.08)"
                   stroke="rgba(59, 130, 246, 0.25)"
-                  strokeWidth="0.05"
+                  strokeWidth="0.09"
                 />
               </pattern>
               
@@ -83,7 +80,7 @@ const Hero = () => {
             
             <polygon
               points="0,0 50,40 0,80"
-              fill="url(#triangleGradient)"
+              fill="none"
               stroke="rgba(59, 130, 246, 0.8)"
               strokeWidth="0.3"
               className="animate-pulse"
@@ -95,7 +92,7 @@ const Hero = () => {
             
             <rect
               width="100%"
-              height="120%"
+              height="100%"
               fill="url(#hexBeehive)"
               clipPath="url(#triangleMask)"
             />
@@ -141,7 +138,7 @@ const Hero = () => {
 
       {/* Hero Content - LEFT ALIGNED inside the triangle */}
       <div className="relative z-20 flex-grow flex items-center justify-start pt-8 md:pt-12">
-        <div className="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col items-start text-left justify-center mt-8 md:mt-16 max-w-6xl ml-[-10vw] mt-[-15vw]">
+        <div className="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col items-start text-left justify-center mt-8 md:mt-16 max-w-6xl ml-[-5vw] mb-5vh]">
           {/* Content positioned inside triangle - LEFT ALIGNED */}
           <div className="triangle-content-area" style={{
           
@@ -188,8 +185,8 @@ const Hero = () => {
       {/* Small hexagonal accents outside triangle */}
       <div className="absolute inset-0 w-full h-full z-8 pointer-events-none">
         {/* Top right hexagon cluster */}
-        <div className="absolute top-32 right-16 opacity-25">
-          <svg width="80" height="80">
+        <div className="absolute top-32 right-16 opacity-25 group transition-all duration-300 hover:opacity-50 cursor-pointer pointer-events-auto">
+          <svg width="80" height="80" className="transition-transform duration-300 group-hover:scale-110">
             <polygon
               points="20,5 60,5 80,35 60,65 20,65 0,35"
               fill="none"
@@ -210,8 +207,8 @@ const Hero = () => {
         </div>
 
         {/* Bottom right hexagon */}
-        <div className="absolute bottom-40 right-12 opacity-20">
-          <svg width="60" height="60">
+        <div className="absolute bottom-40 right-12 opacity-20 group transition-all duration-300 hover:opacity-50 cursor-pointer pointer-events-auto">
+          <svg width="60" height="60" className="transition-transform duration-300 group-hover:scale-110">
             <polygon
               points="15,4 45,4 60,30 45,56 15,56 0,30"
               fill="rgba(16, 185, 129, 0.1)"
@@ -257,7 +254,7 @@ const Hero = () => {
           .triangle-content-area {
             margin-top: 6vh !important;
             margin-left: 6vw !important;
-            max-width: 45vw !important;
+            max-w: 45vw !important;
           }
         }
       `}</style>

@@ -32,14 +32,14 @@ const LogoTriangle = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Technical grid background */}
-      <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+      <div className="absolute inset-0 opacity-20 group-hover:opacity-50 transition-opacity duration-500">
         <svg width="140" height="140" className="absolute inset-0">
           <defs>
             <pattern id="techGrid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#0EA5E9" strokeWidth="0.5" opacity="0.3"/>
+              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#0EA5E9" strokeWidth="0.5" opacity="0.8"/>
             </pattern>
             <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="10" cy="10" r="1" fill="#0EA5E9" opacity="0.2"/>
+              <circle cx="10" cy="10" r="1" fill="#0EA5E9" opacity="0.8"/>
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#techGrid)" />
@@ -58,7 +58,7 @@ const LogoTriangle = () => {
                 x2={`${line.x2}%`}
                 y2={`${line.y2}%`}
                 stroke="url(#circuitGradient)"
-                strokeWidth="1"
+                strokeWidth="1.5"
                 className="animate-circuit-pulse"
                 style={{ animationDelay: `${line.delay}s` }}
               />
@@ -80,17 +80,16 @@ const LogoTriangle = () => {
       <div className="absolute inset-0 flex items-center justify-center">
         <svg width="140" height="140" className="absolute">
           <polygon 
-            points="35,10 105,10 130,70 105,130 35,130 10,70" 
+            points="35,0 105,0 140,70 105,140 35,140 0,70" 
             fill="none" 
-            stroke="rgba(255, 255, 255, 1)" 
-            strokeWidth="2" 
-            className="group-hover:stroke-blue-400 transition-colors duration-500"
+            stroke="white" 
+            strokeWidth="2"
           />
         </svg>
       </div>
 
       {/* Main hexagonal engineering frame */}
-      <div className="relative p-6 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 backdrop-blur-md shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-500 group-hover:scale-105"
+      <div className="relative p-6 bg-white backdrop-blur-md shadow-2xl transition-all duration-500 group-hover:scale-105"
            style={{ 
              clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
              width: '140px',
@@ -98,16 +97,16 @@ const LogoTriangle = () => {
            }}>
         
         {/* Technical overlay with blueprint feel */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-cyan-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         
         {/* Hexagonal measurement lines */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-500">
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-80 transition-opacity duration-500">
           {/* Hexagon outline measurements */}
           <svg width="100%" height="100%" className="absolute inset-0">
             <polygon 
               points="35,17 105,17 126,70 105,123 35,123 14,70" 
               fill="none" 
-              stroke="#ffffffff" 
+              stroke="#0EA5E9" 
               strokeWidth="1" 
               strokeDasharray="2,2"
               opacity="0.6"

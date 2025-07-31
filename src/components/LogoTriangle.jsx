@@ -26,8 +26,8 @@ const LogoTriangle = () => {
   }, []);
 
   return (
-    <div 
-      className="relative flex items-center justify-center cursor-pointer group"
+    <div
+      className="relative flex items-center justify-center cursor-pointer group w-[140px] h-[140px]" // Set a fixed size for the container
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -76,43 +76,26 @@ const LogoTriangle = () => {
         </svg>
       </div>
 
-      {/* Hexagonal border outline */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <svg width="140" height="140" className="absolute">
-          <polygon 
-            points="35,0 105,0 140,70 105,140 35,140 0,70" 
-            fill="none" 
-            stroke="white" 
-            strokeWidth="2"
-          />
-        </svg>
-      </div>
+      {/* Container for logo and its hover effects */}
+      <div className="relative w-[140px] h-[140px] flex items-center justify-center transition-all duration-500 group-hover:scale-105">
 
-      {/* Main hexagonal engineering frame */}
-      <div className="relative p-6 bg-white backdrop-blur-md shadow-2xl transition-all duration-500 group-hover:scale-105"
-           style={{ 
-             clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
-             width: '140px',
-             height: '140px'
-           }}>
-        
         {/* Technical overlay with blueprint feel */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-        
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+             style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }} />
+
         {/* Hexagonal measurement lines */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-80 transition-opacity duration-500">
-          {/* Hexagon outline measurements */}
           <svg width="100%" height="100%" className="absolute inset-0">
-            <polygon 
-              points="35,17 105,17 126,70 105,123 35,123 14,70" 
-              fill="none" 
-              stroke="#0EA5E9" 
-              strokeWidth="1" 
+            <polygon
+              points="35,17 105,17 126,70 105,123 35,123 14,70"
+              fill="none"
+              stroke="#0EA5E9"
+              strokeWidth="1"
               strokeDasharray="2,2"
               opacity="0.6"
             />
           </svg>
-          
+
           {/* Corner measurement markers */}
           <div className="absolute top-4 left-8 w-2 h-2 border-l border-t border-blue-400" />
           <div className="absolute top-4 right-8 w-2 h-2 border-r border-t border-blue-400" />
@@ -133,20 +116,20 @@ const LogoTriangle = () => {
           </div>
         </div>
 
-        {/* Logo - Made Larger and centered for hexagon */}
-        <div className="relative z-10 flex items-center justify-center h-full">
+        {/* Logo - Made Larger and centered */}
+        <div className="relative z-20 flex items-center justify-center h-full">
           <img
             src={Logo2}
             alt="Terrene Engineering Logo"
             className={`w-auto object-contain transition-all duration-500 ${
               isHovered ? 'brightness-110 contrast-110' : 'brightness-100'
             }`}
-            style={{ 
-              height: '80px',
-              filter: isHovered 
+            style={{
+              height: '130px',
+              filter: isHovered
                 ? 'drop-shadow(0 0 15px rgba(14, 165, 233, 0.4)) drop-shadow(0 4px 12px rgba(0,0,0,0.3))'
                 : 'drop-shadow(0 2px 8px rgba(0,0,0,0.2))',
-              maxHeight: '80px'
+              
             }}
           />
         </div>
@@ -159,7 +142,8 @@ const LogoTriangle = () => {
         </div>
 
         {/* Scanning effect */}
-        <div className={`absolute inset-0 overflow-hidden ${isHovered ? 'block' : 'hidden'}`}>
+        <div className={`absolute inset-0 overflow-hidden ${isHovered ? 'block' : 'hidden'}`}
+             style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }}>
           <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-scan-vertical opacity-60" />
         </div>
       </div>
@@ -176,16 +160,16 @@ const LogoTriangle = () => {
           0% { top: -2px; }
           100% { top: 100%; }
         }
-        
+
         @keyframes circuit-pulse {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 1; }
         }
-        
+
         .animate-scan-vertical {
           animation: scan-vertical 3s ease-in-out infinite;
         }
-        
+
         .animate-circuit-pulse {
           animation: circuit-pulse 2s ease-in-out infinite;
         }

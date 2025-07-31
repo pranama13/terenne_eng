@@ -1,3 +1,10 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { SPACING_CLASSES } from '@/lib/spacing';
+
+import mapImage from '../assert/map.png';
+
 // Real flag component using inline SVG flags
 const RealFlag = ({ isoCode }: { isoCode: string }) => {
   return (
@@ -15,12 +22,7 @@ const RealFlag = ({ isoCode }: { isoCode: string }) => {
       />
     </div>
   );
-};import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { SPACING_CLASSES } from '@/lib/spacing';
-
-import mapImage from '../assert/map.png';
+};
 
 // Data object for potential future use
 const countryData = {
@@ -82,9 +84,9 @@ const GlobalPresence = () => {
         {/* Main container with a vertical layout */}
         <div className="flex flex-col gap-8">
 
-          {/* --- TOP SECTION: COUNTRIES --- */}
+          {/* --- TOP SECTION: COUNTRIES - UPDATED BACKGROUND --- */}
           <motion.div 
-            className="p-6 lg:p-10 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] rounded-2xl border border-white/10 shadow-xl relative overflow-hidden"
+            className="p-6 lg:p-10 bg-gradient-to-r from-cyan-500 to-blue-700 rounded-2xl border border-white/10 shadow-xl relative overflow-hidden"
             initial={{ opacity: 0, y: 50 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}

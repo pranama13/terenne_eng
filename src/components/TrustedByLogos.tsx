@@ -25,7 +25,6 @@ import logo21 from "../assert/logos/logo21.png";
 import logo22 from "../assert/logos/logo22.png";
 import logo23 from "../assert/logos/logo23.png";
 import logo24 from "../assert/logos/logo24.png";
-import logobbackground from "../assert/career.jpg";
 
 const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo19, logo20, logo21, logo22, logo23, logo24];
 
@@ -76,21 +75,14 @@ const TrustedByLogos = () => {
 
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 relative z-20">
         <div
-          className="rounded-2xl border border-white/20 p-4 sm:p-8 md:p-12 relative overflow-hidden shadow-2xl"
-          style={{
-            backgroundImage: `url(${logobbackground})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
+          className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-2xl border border-white/20 p-4 sm:p-8 md:p-12 relative overflow-hidden shadow-2xl"
         >
-          <div className="absolute inset-0 bg-white/70 backdrop-blur-sm z-0" />
-          
           <div className="relative z-10">
             <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
                 Our Valued Customers
               </h2>
-              <div className="mt-4 h-1.5 w-24 bg-gray-700 mx-auto rounded-full"></div>
+              <div className="mt-4 h-1.5 w-24 bg-white mx-auto rounded-full"></div>
             </div>
 
             <div className="w-full overflow-hidden">
@@ -120,7 +112,7 @@ const TrustedByLogos = () => {
                   <div
                     key={groupIndex}
                     className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                      isActive ? 'bg-gray-700 w-6' : 'bg-gray-400'
+                      isActive ? 'bg-white w-6' : 'bg-white/40'
                     }`}
                   />
                 );

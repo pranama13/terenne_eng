@@ -7,6 +7,8 @@ import { SHADOW_PRESETS, DARK_THEME_SHADOWS } from '@/lib/shading';
 import service2 from '../assert/service2.jpg';
 import service3 from '../assert/service3.jpg';
 import { Card } from "@/components/ui/card";
+import Header from '../components/Header'; // Assuming Header is in this path
+import Footer from '../components/Footer'; // Assuming Footer is in this path
 
 // --- SERVICE CATEGORIES ---
 const serviceCategories = [
@@ -177,7 +179,7 @@ const Services = () => {
 							<div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none"></div>
 						</div>
 						<div
-							className="flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-[#0E75A0]/90 to-[#0a5a7a]/90 backdrop-blur-sm rounded-r-2xl border-l border-white/10 relative overflow-hidden transition-all duration-300"
+							className="flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-r from-cyan-500 to-blue-700 backdrop-blur-sm rounded-r-2xl border-l border-white/10 relative overflow-hidden transition-all duration-300"
 						>
 							<div className="absolute inset-0 opacity-10">
 								<div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl"></div>

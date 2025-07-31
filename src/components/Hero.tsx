@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import heroVideo from '@/assert/videos/hero-background.mp4';
 import Header from './Header';
 
@@ -35,51 +35,55 @@ const Hero = () => {
         <Header mode="transparent" />
       </div>
 
-      {/* Large Triangle Overlay with Hexagonal Pattern */}
-      <div className="absolute inset-0 w-full h-full z-20 flex items-left justify-start mt-[-65vh]">
-        <div style={{
-          width: '200vw',
-          height: '150vh',
+      {/* Centered Hexagon Overlay with Hexagonal Pattern */}
+      <div className="absolute inset-0 w-full h-full z-20 flex items-center justify-center ml-[-56.5vh] mt-[15vh]">
+        {/* Added 'group' class to enable group-hover effects on children */}
+        <div className="group" style={{
+          width: '95vmin', // Use viewport units for responsive sizing
+          height: '95vmin',
         }}>
           <svg
-            width="165%"
-            height="165%"
-            viewBox="0 0 50 50"
-            preserveAspectRatio="xMinYMid meet"
+            width="100%"
+            height="85%"
+            // The viewBox is now wider than it is tall (140x80)
+            viewBox="0 0 140 100"
+            preserveAspectRatio="xMidYMid meet"
             className="absolute"
           >
             <defs>
               <pattern id="hexBeehive" width="3" height="3" patternUnits="userSpaceOnUse">
                 <polygon
                   points="0.75,0.2 2.25,0.2 3,1.3 2.25,2.4 0.75,2.4 0,1.3"
-                  fill="hsla(216, 46%, 96%, 0.08)"
-                  stroke="rgba(59, 130, 246, 0.25)"
+                  fill="hsla(216, 46%, 96%, 0.1)"
+                  stroke="hsla(210, 100%, 55%, 0.97)"
                   strokeWidth="0.09"
                 />
               </pattern>
-              
+
               <pattern id="hexBeehiveSmall" width="2" height="1.7" patternUnits="userSpaceOnUse">
                 <polygon
                   points="0.5,0.1 1.5,0.1 2,0.85 1.5,1.6 0.5,1.6 0,0.85"
                   fill="none"
-                  stroke="rgba(14, 165, 233, 0.25)"
+                  stroke="rgba(67, 195, 255, 0.5)"
                   strokeWidth="0.03"
                 />
               </pattern>
-              
-              <clipPath id="triangleMask">
-                <polygon points="0,0 50,40 0,80" />
+
+              {/* Updated clipPath to a wide hexagon */}
+              <clipPath id="hexagonMask">
+                  <polygon points="70,0 140,20 140,60 70,80 0,60 0,20" />
               </clipPath>
-              
+
               <linearGradient id="triangleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="rgba(59, 130, 246, 0.12)" />
                 <stop offset="50%" stopColor="rgba(14, 165, 233, 0.08)" />
                 <stop offset="100%" stopColor="rgba(16, 185, 129, 0.06)" />
               </linearGradient>
             </defs>
-            
+
+            {/* Updated polygon for the wide hexagon border */}
             <polygon
-              points="0,0 50,40 0,80"
+              points="70,0 140,20 140,60 70,80 0,60 0,20"
               fill="none"
               stroke="rgba(59, 130, 246, 0.8)"
               strokeWidth="0.3"
@@ -89,80 +93,48 @@ const Hero = () => {
                 filter: 'drop-shadow(0 0.4px 1.2px rgba(59, 130, 246, 0.3))'
               }}
             />
-            
-            <rect
-              width="100%"
-              height="100%"
-              fill="url(#hexBeehive)"
-              clipPath="url(#triangleMask)"
-            />
-            
-            <rect
-              width="100%"
-              height="100%"
-              fill="url(#hexBeehiveSmall)"
-              clipPath="url(#triangleMask)"
-            />
-            
-            <g opacity="0.6">
-              <polygon
-                points="-0.5,-0.5 0.5,-0.5 1,0 0.5,0.5 -0.5,0.5 0,0"
-                fill="rgba(59, 130, 246, 0.2)"
-                stroke="rgba(59, 130, 246, 1)"
-                strokeWidth="0.2"
-                className="animate-pulse"
-                style={{ animationDelay: '1s' }}
+
+            {/* Fills applied to the new hexagon mask, wrapped in a group for hover effect */}
+            <g className="transition-transform duration-300 ease-in-out group-hover:scale-[1.03]" style={{ transformOrigin: 'center' }}>
+              <rect
+                width="100%"
+                height="100%"
+                fill="url(#hexBeehive)"
+                clipPath="url(#hexagonMask)"
               />
-              
-              <polygon
-                points="-0.5,79.5 0.5,79.5 1,80 0.5,80.5 -0.5,80.5 0,80"
-                fill="rgba(59, 130, 246, 0.2)"
-                stroke="rgba(59, 130, 246, 1)"
-                strokeWidth="0.2"
-                className="animate-pulse"
-                style={{ animationDelay: '2s' }}
-              />
-              
-              <polygon
-                points="49.5,39.5 50.5,39.5 51,40 50.5,40.5 49.5,40.5 49,40"
-                fill="rgba(59, 130, 246, 0.2)"
-                stroke="rgba(59, 130, 246, 1)"
-                strokeWidth="0.2"
-                className="animate-pulse"
-                style={{ animationDelay: '1.5s' }}
+              <rect
+                width="100%"
+                height="100%"
+                fill="url(#hexBeehiveSmall)"
+                clipPath="url(#hexagonMask)"
               />
             </g>
           </svg>
         </div>
       </div>
 
-      {/* Hero Content - LEFT ALIGNED inside the triangle */}
-      <div className="relative z-20 flex-grow flex items-center justify-start pt-8 md:pt-12">
-        <div className="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col items-start text-left justify-center mt-8 md:mt-16 max-w-6xl ml-[-5vw] mb-5vh]">
-          {/* Content positioned inside triangle - LEFT ALIGNED */}
-          <div className="triangle-content-area" style={{
-          
-            marginLeft: '8vw',
-            maxWidth: '50vw',
-            textAlign: 'left'
-          }}>
-            {/* Main Heading - LEFT ALIGNED */}
-            <h1 className="font-extrabold text-white mb-4 leading-tight drop-shadow-2xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-left">
-              Engineering excellence
+      {/* Hero Content - CENTERED */}
+      <div className="relative z-20 flex-grow flex items-center justify-center">
+        <div className="container mx-auto px-8 md:px-16 lg:px-24 flex flex-col items-center text-center justify-center max-w-6xl">
+          {/* Increased maxWidth for the content area to fit the wider shape */}
+          <div className="hexagon-content-area" style={{ maxWidth: '750px' }}>
+            {/* Main Heading - CENTERED */}
+            <h1 className="font-extrabold text-white mb-4 leading-tight drop-shadow-2xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center">
+              Engineering Excellence
               <br />
               <span className="font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl -mt-1 inline-block">
-                is at the heart of everything we do
+                is at the Heart of Everything We do
               </span>
             </h1>
 
-            {/* Description - LEFT ALIGNED */}
+            {/* Description - CENTERED */}
             <p
-              className="text-white text-lg md:text-xl mb-6 text-left"
+              className="text-white text-lg md:text-xl mb-6 text-center ml-5"
               style={{
                 fontFamily: '"Abadi Extra Light", "Arial Nova Cond Light", Arial, sans-serif',
                 fontWeight: 200,
                 lineHeight: 1.3,
-                maxWidth: '500px',
+                maxWidth: '700px',
                 letterSpacing: "0.01em",
                 textRendering: "optimizeLegibility",
                 WebkitFontSmoothing: "antialiased",
@@ -172,8 +144,8 @@ const Hero = () => {
               As trusted engineering consultants and contractors, we design, build, and maintain innovative solutions that meet today's challenges while ensuring sustainability for a better tomorrow
             </p>
 
-            {/* Tagline - LEFT ALIGNED */}
-            <div className="mt-6 text-left">
+            {/* Tagline - CENTERED */}
+            <div className="mt-6 text-center">
               <span className="font-extrabold text-white text-lg sm:text-xl md:text-2xl tracking-wide">
                 DESIGN | BUILD | SUSTAINABLE
               </span>
@@ -182,7 +154,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Small hexagonal accents outside triangle */}
+      {/* Small hexagonal accents outside the main shape */}
       <div className="absolute inset-0 w-full h-full z-8 pointer-events-none">
         {/* Top right hexagon cluster */}
         <div className="absolute top-32 right-16 opacity-25 group transition-all duration-300 hover:opacity-50 cursor-pointer pointer-events-auto">
@@ -241,21 +213,9 @@ const Hero = () => {
           animation: scroll-indicator 2s ease-in-out infinite;
         }
 
-        /* Responsive triangle content positioning */
-        @media (max-width: 768px) {
-          .triangle-content-area {
-            margin-top: 10vh !important;
-            margin-left: 4vw !important;
-            max-width: 70vw !important;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .triangle-content-area {
-            margin-top: 6vh !important;
-            margin-left: 6vw !important;
-            max-w: 45vw !important;
-          }
+        /* Added for centering the transform on the SVG group */
+        .transform-origin-center {
+          transform-origin: center;
         }
       `}</style>
     </section>

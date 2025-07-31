@@ -81,9 +81,9 @@ const ServiceOfferings = () => {
               <div className="absolute -inset-1 bg-white/10 blur-sm rounded-br"></div>
             </div>
 
-            {/* Your colored, padded container with heading/description */}
+            {/* Your colored, padded container with heading/description - UPDATED BACKGROUND */}
             <div
-              className="flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-br from-[#0E75A0] to-[#0a5a7a] rounded-2xl border-r border-white/10 relative overflow-hidden mb-10"
+              className="flex flex-col justify-center p-6 lg:p-8 bg-gradient-to-r from-cyan-500 to-blue-700 rounded-2xl border-r border-white/10 relative overflow-hidden mb-10"
             >
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl"></div>

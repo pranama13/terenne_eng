@@ -141,7 +141,7 @@ const Header = ({ mode = 'transparent', className = '' }: HeaderProps) => {
       <div className="w-full max-w-[2400px] mx-auto px-2 py-1">
         <div className="flex items-center justify-between">
             <Link to="/" aria-label="Go to Home" onClick={() => setIsMenuOpen(false)}>
-                <div className="mx-4" style={{ transform: 'scale(0.8)' }}>
+                <div className="mx-4" style={{ transform: 'scale(0.9)' }}>
                     <LogoTriangle />
                 </div>
             </Link>

@@ -5,6 +5,7 @@ import { SPACING_CLASSES } from '@/lib/spacing';
 import { SHADOW_PRESETS, DARK_THEME_SHADOWS } from '@/lib/shading';
 import homepageBuildingImage from '@/assert/homepagebuilding1.jpg';
 import building2 from '@/assert/building2.jpg';
+import Header from '../components/Header'; // Assuming Header component is in this path
 
 
 const About = () => {
@@ -72,10 +73,10 @@ const About = () => {
 			className="overflow-hidden w-full relative py-8"
 		>
 			{/* Hero Video Background */}
-			<video 
-				autoPlay 
-				loop 
-				muted 
+			<video
+				autoPlay
+				loop
+				muted
 				playsInline
 				className="absolute inset-0 w-full h-full object-cover z-0"
 			>
@@ -92,23 +93,23 @@ const About = () => {
 			<div className="w-full relative z-20 px-4 md:px-8">
 				{/* Main content */}
 				<div ref={contentRef} className={`transform transition-all duration-700 ${animated.content ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-					<div 
+					<div
 						className="grid lg:grid-cols-2 gap-0 items-stretch overflow-hidden transition-all duration-300 hover:shadow-2xl rounded-2xl"
 						style={{
 							boxShadow: SHADOW_PRESETS.ABOUT.style,
 						}}
 					>
-						{/* Text content */}
-						<div 
-                            className="flex flex-col justify-center p-8 md:p-12 lg:p-16 bg-gradient-to-br from-[#0E75A0]/90 to-[#0a5a7a]/90 backdrop-blur-sm border-r border-white/10 relative overflow-hidden transition-all duration-300"
-							style={{ 
+						{/* Text content - UPDATED BACKGROUND */}
+						<div
+                            className="flex flex-col justify-center p-8 md:p-12 lg:p-16 bg-gradient-to-r from-cyan-500 to-blue-700 backdrop-blur-sm border-r border-white/10 relative overflow-hidden transition-all duration-300"
+							style={{
 								boxShadow: DARK_THEME_SHADOWS.ELEVATED.MEDIUM,
 							}}>
 							<div className="absolute inset-0 opacity-10">
 								<div className="absolute top-0 right-0 w-32 h-32 bg-white/20 rounded-full blur-3xl"></div>
 								<div className="absolute bottom-0 left-0 w-24 h-24 bg-white/20 rounded-full blur-2xl"></div>
 							</div>
-							
+
 							<div className="relative z-10">
 								<div className="mb-6">
 									<div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 py-3 px-6 rounded-2xl shadow-lg hover:bg-white/15 transition-all duration-300 group"
@@ -120,22 +121,22 @@ const About = () => {
 										<div className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
 									</div>
 								</div>
-								
+
 								<h2 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
 									<span className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">About Terrene</span>
 									<br /><span className="text-white/90 font-light">Engineering</span>
 								</h2>
-								
+
 								<div className="flex items-center gap-4 mb-6">
 									<div className="w-16 h-1 bg-gradient-to-r from-primary to-primary/60 rounded-full"></div>
 									<div className="w-2 h-2 bg-primary rounded-full animate-ping"></div>
 									<div className="w-8 h-1 bg-gradient-to-r from-primary/60 to-transparent rounded-full"></div>
 								</div>
-								
+
 								<p className="text-white/90 text-lg leading-relaxed max-w-lg mb-4">
 									Terrene Engineering (Pvt) Ltd is a globally trusted name in engineering consultancy and contracting. With over 20 years of proven expertise, we deliver end-to-end engineering solutions that merge innovation, precision, and sustainability. Our team of experienced professionals operates across Sri Lanka, Maldives, Oman, UAE, Qatar, KSA, Australia, Singapore, New Zealand, UK, Canada, Germany, and serves clients around the world.
 								</p>
-								
+
 								<div className="flex flex-wrap gap-4 mb-6">
 									<div className="flex items-center gap-2 text-white/80 text-sm">
 										<Award className="w-4 h-4 text-primary" />
@@ -150,7 +151,7 @@ const About = () => {
 										<span>Quality Assured</span>
 									</div>
 								</div>
-								
+
 								<Button variant="outline" className="group bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20 hover:border-white/50 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg"
 									style={{
 										boxShadow: DARK_THEME_SHADOWS.CARD.MEDIUM,
@@ -162,7 +163,7 @@ const About = () => {
 								</Button>
 							</div>
 						</div>
-						
+
 						{/* Image and Video Container */}
 						<div
 							ref={imageRef}
@@ -177,10 +178,10 @@ const About = () => {
 							onMouseLeave={() => setIsHovering(false)}
 						>
                             {/* About Video Background */}
-                            <video 
-                                autoPlay 
-                                loop 
-                                muted 
+                            <video
+                                autoPlay
+                                loop
+                                muted
                                 playsInline
                                 className="absolute inset-0 w-full h-full object-cover z-0"
                             >

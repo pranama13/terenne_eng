@@ -47,30 +47,30 @@ const ArchitecturalConsulting = () => {
           {/* Key Features */}
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             <div
-              className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-shadow transform hover:-translate-y-2 duration-300 animate-section-fade"
+              className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-shadow transform hover:-translate-y-2 duration-300 animate-section-fade"
               style={{ animationDelay: '0.2s' }}
             >
-              <Palette className="w-12 h-12 text-primary mx-auto mb-4" />
+              <Palette className="w-12 h-12 text-primary mx-auto mb-4 bg-white" />
               <h3 className="text-xl font-semibold mb-3">Design Development</h3>
               <p className="text-muted-foreground">
                 Creative architectural design from concept sketches to detailed development drawings that bring your vision to life.
               </p>
             </div>
             <div
-              className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-shadow transform hover:-translate-y-2 duration-300 animate-section-fade"
+              className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-shadow transform hover:-translate-y-2 duration-300 animate-section-fade"
               style={{ animationDelay: '0.3s' }}
             >
-              <Ruler className="w-12 h-12 text-primary mx-auto mb-4" />
+              <Ruler className="w-12 h-12 text-primary mx-auto mb-4 bg-white" />
               <h3 className="text-xl font-semibold mb-3">Space Planning</h3>
               <p className="text-muted-foreground">
                 Optimal utilization of available space with functional layouts designed for efficiency and comfort.
               </p>
             </div>
             <div
-              className="bg-white rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-shadow transform hover:-translate-y-2 duration-300 animate-section-fade"
+              className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg shadow-lg p-8 text-center hover:shadow-2xl transition-shadow transform hover:-translate-y-2 duration-300 animate-section-fade"
               style={{ animationDelay: '0.4s' }}
             >
-              <Lightbulb className="w-12 h-12 text-primary mx-auto mb-4" />
+              <Lightbulb className="w-12 h-12 text-primary mx-auto mb-4 bg-white" />
               <h3 className="text-xl font-semibold mb-3">Sustainable Design</h3>
               <p className="text-muted-foreground">
                 Environmentally responsible architecture that minimizes ecological footprint while maximizing resource efficiency.
@@ -79,35 +79,35 @@ const ArchitecturalConsulting = () => {
           </div>
 
           {/* Scope of Work */}
-          <div className="bg-slate-50 rounded-lg p-10 mb-20">
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg p-10 mb-20">
             <h2 className="text-3xl font-bold mb-8">Scope of Work</h2>
             <div className="grid md:grid-cols-2 gap-x-10 gap-y-5">
               <div className="flex items-start">
-                <CheckCircle className="text-primary mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="text-white mr-3 mt-1 flex-shrink-0 fill" />
                 <p>Conceptual Design & Development</p>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="text-primary mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="text-white mr-3 mt-1 flex-shrink-0" />
                 <p>Site Analysis & Space Planning</p>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="text-primary mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="text-white mr-3 mt-1 flex-shrink-0" />
                 <p>Preparation of 2D Drawings & 3D Visualizations</p>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="text-primary mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="text-white mr-3 mt-1 flex-shrink-0" />
                 <p>Planning Approval Documentation</p>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="text-primary mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="text-white mr-3 mt-1 flex-shrink-0" />
                 <p>Detailed Construction Drawings</p>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="text-primary mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="text-white mr-3 mt-1 flex-shrink-0" />
                 <p>Coordination with Structural, MEP, and Interior Design Teams</p>
               </div>
               <div className="flex items-start">
-                <CheckCircle className="text-primary mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="text-white mr-3 mt-1 flex-shrink-0" />
                 <p>Green Building Concepts & Compliance Support</p>
               </div>
             </div>
@@ -119,29 +119,29 @@ const ArchitecturalConsulting = () => {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-slate-100">
+                  <tr className="bg-gradient-to-r from-cyan-500 to-blue-700">
                     <th className="border p-4 text-left">Specialization</th>
                     <th className="border p-4 text-left">Description</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="hover:bg-slate-50">
+                  <tr className="hover:bg-gradient-to-r from-cyan-500 to-blue-700">
                     <td className="border p-4 font-medium">Sustainable Architecture</td>
                     <td className="border p-4">Design incorporating energy-efficient layouts, passive cooling, and eco-materials.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50">
+                  <tr className="hover:bg-gradient-to-r from-cyan-500 to-blue-700">
                     <td className="border p-4 font-medium">Theme-Based Design</td>
                     <td className="border p-4">Architecture tailored to modern, classical, tropical, or cultural themes.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50">
+                  <tr className="hover:bg-gradient-to-r from-cyan-500 to-blue-700">
                     <td className="border p-4 font-medium">Modular/Prefab Planning</td>
                     <td className="border p-4">Layouts suitable for fast-track or prefabricated building systems.</td>
                   </tr>
-                  <tr className="hover:bg-slate-50">
+                  <tr className="hover:bg-gradient-to-r from-cyan-500 to-blue-700">
                     <td className="border p-4 font-medium">Vastu / Feng Shui Integration</td>
                     <td className="border p-4">Space planning based on traditional cultural principles (available upon request).</td>
                   </tr>
-                  <tr className="hover:bg-slate-50">
+                  <tr className="hover:bg-gradient-to-r from-cyan-500 to-blue-700">
                     <td className="border p-4 font-medium">Master Planning & Urban Design</td>
                     <td className="border p-4">Comprehensive site layout, zoning, and large-scale land-use planning.</td>
                   </tr>
@@ -154,7 +154,7 @@ const ArchitecturalConsulting = () => {
           <h2 className="text-3xl font-bold mb-8">Featured Projects</h2>
           <div className="grid md:grid-cols-2 gap-10 mb-20">
             {/* Project 1 */}
-            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg overflow-hidden shadow-lg">
               <img 
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070" 
                 alt="Modern Residential Complex" 
@@ -166,9 +166,9 @@ const ArchitecturalConsulting = () => {
                   A luxury residential complex featuring sustainable design principles and modern aesthetics.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Residential</span>
-                  <span className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Sustainable</span>
-                  <span className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Luxury</span>
+                  <span className="bg-blue-800 text-white text-xs px-3 py-1 rounded-full">Residential</span>
+                  <span className="bg-blue-800 text-white text-xs px-3 py-1 rounded-full">Sustainable</span>
+                  <span className="bg-blue-800 text-white text-xs px-3 py-1 rounded-full">Luxury</span>
                 </div>
                 <div className="text-sm text-muted-foreground mb-4">
                   <p><strong>Location:</strong> Dubai Marina</p>
@@ -182,7 +182,7 @@ const ArchitecturalConsulting = () => {
             </div>
             
             {/* Project 2 */}
-            <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg overflow-hidden shadow-lg">
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070" 
                 alt="Corporate Office Building" 
@@ -194,9 +194,9 @@ const ArchitecturalConsulting = () => {
                   A state-of-the-art commercial building with innovative workspace design and energy-efficient systems.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Commercial</span>
-                  <span className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">Corporate</span>
-                  <span className="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">LEED Certified</span>
+                  <span className="bg-blue-800 text-white text-xs px-3 py-1 rounded-full">Commercial</span>
+                  <span className="bg-blue-800 text-white text-xs px-3 py-1 rounded-full">Corporate</span>
+                  <span className="bg-blue-800 text-white text-xs px-3 py-1 rounded-full">LEED Certified</span>
                 </div>
                 <div className="text-sm text-muted-foreground mb-4">
                   <p><strong>Location:</strong> Business Bay</p>
@@ -211,26 +211,26 @@ const ArchitecturalConsulting = () => {
           </div>
 
           {/* Our Process */}
-          <div className="bg-slate-50 rounded-lg p-10 mb-20">
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-700 rounded-lg p-10 mb-20">
             <h2 className="text-3xl font-bold mb-8 text-center">Our Design Process</h2>
             <div className="grid md:grid-cols-4 gap-6">
               <div className="flex flex-col items-center text-center">
-                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">1</div>
+                <div className="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">1</div>
                 <h3 className="font-semibold mb-2">Concept Development</h3>
                 <p className="text-sm text-muted-foreground">Initial brainstorming and conceptualization based on client requirements</p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">2</div>
+                <div className="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">2</div>
                 <h3 className="font-semibold mb-2">Schematic Design</h3>
                 <p className="text-sm text-muted-foreground">Developing preliminary designs and spatial arrangements</p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">3</div>
+                <div className="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">3</div>
                 <h3 className="font-semibold mb-2">Design Development</h3>
                 <p className="text-sm text-muted-foreground">Refining designs and integrating technical requirements</p>
               </div>
               <div className="flex flex-col items-center text-center">
-                <div className="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">4</div>
+                <div className="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mb-4">4</div>
                 <h3 className="font-semibold mb-2">Construction Documentation</h3>
                 <p className="text-sm text-muted-foreground">Creating detailed drawings and specifications for construction</p>
               </div>

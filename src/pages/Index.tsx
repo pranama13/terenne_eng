@@ -10,6 +10,7 @@ import CompletionStats from '../components/completion'; // Fix capitalization
 import GlobalPresence from '../components/GlobalPresence';
 import Testimonials from '../components/Testimonials'; // Import Testimonials component
 import TrustedByLogos from '../components/TrustedByLogos'; // <-- Add this import at the top
+import ServiceOfferings from '@/components/ServiceOfferings'; 
 
 // Replace the existing scrollToSection function with this improved version
 const scrollToSection = (elementRef) => {
@@ -70,7 +71,8 @@ const Index = () => {
   const heroRef = useRef(null);
   const servicesRef = useRef(null);
   const projectsRef = useRef(null);
-  const testimonialsRef = useRef(null); // Add ref for testimonials section
+  const testimonialsRef = useRef(null);
+  const ServiceOfferingsRef = useRef(null); // Add ref for testimonials section
   const contactRef = useRef(null);
   
   // Add refs for all sections you want to scroll to
@@ -148,8 +150,10 @@ const Index = () => {
         <CompletionStats />
         <Testimonials />
       </div>
+      
       <div ref={contactRef} className="mb-0">
         <TrustedByLogos />
+        <ServiceOfferings />
         <Contact />
       </div>
       <Footer />
